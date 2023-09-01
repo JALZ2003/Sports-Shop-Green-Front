@@ -22,26 +22,26 @@ export default function Home() {
         </div> */}
                 <div className="flex justify-around py-10 px-2 flex-wrap gap-10">
             
-                    <div className="flex-col w-full max-w-sm rounded overflow-hidden  shadow-lg">
+                    <div className="flex-col w-[300px] h-[300px] object-cover rounded-2xl overflow-hidden  shadow-lg">
                         <div className=" flex items-end justify-center pb-10 h-full w-full bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(${SportWear})` }}>
                             <span className=" flex justify-center w-[60%] px-6 pt-4 pb-2  bg-gray-200 rounded-md px-3 py-1 text-2xl font-bold text-gray-700 mr-2 mb-2 bg-white bg-opacity-70">SPORTWEAR</span>
                         </div>
                     </div>
 
-                    <div className="flex-col w-full max-w-sm rounded overflow-hidden  shadow-lg">
-                        <div className=" flex w-full h-[350px] items-end justify-center pb-10 h-full bg-cover bg-center  rounded-2xl" style={{ backgroundImage: `url(${Accesories})` }}>
+                    <div className="flex-col w-[300px] h-[300px] object-cover rounded-2xl overflow-hidden  shadow-lg">
+                        <div className=" flex w-full h-full items-end justify-center pb-10 h-full bg-cover bg-center  rounded-2xl" style={{ backgroundImage: `url(${Accesories})` }}>
                             <span className=" flex justify-center w-[60%] px-6 pt-4 pb-2  bg-gray-200 rounded-md px-3 py-1 text-2xl font-bold text-gray-700 mr-2 mb-2 bg-white bg-opacity-70">ACCESORIES</span>
                         </div>
                     </div>
 
-                    <div className="flex-col w-full max-w-sm rounded overflow-hidden  shadow-lg">
-                        <div className=" flex w-full h-[350px] items-end justify-center pb-10 h-full bg-cover bg-center  rounded-2xl" style={{ backgroundImage: `url(${Equipements})` }}>
+                    <div className="flex-col w-[300px] h-[300px] object-cover rounded-2xl overflow-hidden  shadow-lg">
+                        <div className=" flex w-full h-full items-end justify-center pb-10 h-full bg-cover bg-center  rounded-2xl" style={{ backgroundImage: `url(${Equipements})` }}>
                             <span className=" flex justify-center w-[60%] px-6 pt-4 pb-2  bg-gray-200 rounded-md px-3 py-1 text-2xl font-bold text-gray-700 mr-2 mb-2 bg-white bg-opacity-70">EQUIPEMENTS</span>
                         </div>
                     </div>
 
-                    <div className="flex-col w-full max-w-sm rounded overflow-hidden  shadow-lg">
-                        <div className=" flex w-full h-[350px] items-end justify-center pb-10 h-full bg-cover bg-center  rounded-2xl" style={{ backgroundImage: `url(${Tennis})` }}>
+                    <div className="flex-col w-[300px] h-[300px] object-cover rounded-2xl overflow-hidden  shadow-lg">
+                        <div className=" flex w-full h-full items-end justify-center pb-10 h-full bg-cover bg-center  rounded-2xl" style={{ backgroundImage: `url(${Tennis})` }}>
                             <span className=" flex justify-center w-[60%] px-6 pt-4 pb-2  bg-gray-200 rounded-md px-3 py-1 text-2xl font-bold text-gray-700 mr-2 mb-2 bg-white bg-opacity-70">TENNIS</span>
                         </div>
                     </div>
