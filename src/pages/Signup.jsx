@@ -1,12 +1,14 @@
 import React from 'react'
 import img from '../../public/images/logoMarca.png'
-import logo from '../../public/images/logo.png'
+import arrow from '../../public/images/arrow.png'
 
 export default function Signup() {
   return (
     <div className='w-full m-0 z-40'>
       <section className='flex flex-row w-screen h-screen justify-center'>
+        <img src={arrow} alt="" className='absolute left-8 top-20'  />
         <img className='w-1/2 mt-8 object-cover bg-blue-300' src={img} alt="marca" />
+        
         <div className='bg-[#EDAF92] w-1/2 '>
           <h1 className='mt-36 flex font-semibold justify-center'>CREATE AN ACCOUNT!</h1>
           <form className='mt-12 flex flex-col justify-around px-12   h-32'>
