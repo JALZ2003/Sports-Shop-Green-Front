@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Logo from "/Images/Logo.png"
+import Logo from "../../public/Images/Logo.png"
 import Display from './Display';
 import DisplayAccount from "./DisplayAccount";
-import Account from "/Images/AccountOptions.png"
+import Account from "../../public/Images/AccountOptions.png"
 
 export default function Navbar({optionsAccount}) {
 
