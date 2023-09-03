@@ -1,6 +1,12 @@
 import { useState } from "react";
+
+import Logo from "../../public/Images/Logo.png"
+import Display from './Display';
+import DisplayAccount from "./DisplayAccount";
+import Account from "../../public/Images/AccountOptions.png"
 import { Link as Anchor } from 'react-router-dom';
-import Logo from "/Images/Logo.png"
+
+
 
 export default function Navbar() {
 
@@ -18,13 +24,15 @@ export default function Navbar() {
             <nav className="absolute w-full top-0 z-20 ">
                 <div className="bg-white">
                     <span className="flex justify-between items-center">
-                        <svg onClick={() => setShow(!show)} className="cursor-pointer hover:scale-110 transition w-10 h-10 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <svg onClick={() => setShow(!show)} className="cursor-pointer hover:scale-110 transition w-10 h-10 ml-4 mt-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
-                        <Anchor to="/">
-                            <img className="mt-[20px] ml-[200px] w-[193px] h-[52px]" src={Logo} alt='logo'></img>
-                        </Anchor>
-                        <div className="flex pr-4 items-center">
+                        <div>
+                            <Anchor to="/">
+                                <img className="mt-[20px] sm:ml-[50%] w-[193px] h-[52px]" src={Logo} alt='logo'></img>
+                            </Anchor>
+                        </div>
+                        <div className="hidden pr-4 items-center sm:flex">
                             <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 flex  ${login ? ('opacity-100 ') : ('opacity-0 ')}`}>
                                 <li className=" w-full bg-gray-200 rounded-l-lg px-2 hover:bg-gray-300 flex justify-center">
                                     <Anchor to="/signin" onClick={() => setLogin(!login)} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Log in</Anchor>
