@@ -35,8 +35,9 @@ export default function Signup() {
               <input type="text" className='rounded-lg font-thin px-2 hover:border-2 border-orange-300 focus:border-black-400 active:bg-black-600  h-8' />
 
             </div>
-            <label className='font-light text-[12px] w-3/4' htmlFor="Name"> <input type="checkbox" className='rounded-lg font-thin px-2 hover:border-2 border-black focus:border-black-400 active:bg-black-600  h-8' />I declare that I have read and authorize the use of my personal data according to the Authorization and accept the Terms and Conditions of Mometum X.</label>
-<input type="buttom" placeholder='REGISTER' className='bg-[#EC6B2F] hover:border-4 border-black'/>
+            <label className='font-light text-[10px] m-2 flex w-5/6 mt-4 ' htmlFor="register"> <input type="checkbox" className='  h-8 m-2' />I declare that I have read and authorize the use of my personal data according to the authorization and accept the Terms and Conditions of Mometum X.</label>
+            <input type="buttom" placeholder='REGISTER' className='bg-[#EC6B2F] rounded-lg  flex mt-4 hover:border-2 border-orange-500 text-center placeholder-white' />
+            <h3 className='font-thin mt-6'>Already have an account? <a href="">SingIn</a></h3>
           </form>
         </div>
       </section>
