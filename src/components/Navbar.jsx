@@ -1,6 +1,12 @@
 import { useState } from "react";
+
+import Logo from "../../public/Images/Logo.png"
+import Display from './Display';
+import DisplayAccount from "./DisplayAccount";
+import Account from "../../public/Images/AccountOptions.png"
 import { Link as Anchor } from 'react-router-dom';
-import Logo from "/Images/Logo.png"
+
+
 
 export default function Navbar() {
 
