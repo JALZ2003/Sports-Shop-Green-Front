@@ -15,7 +15,7 @@ export default function Navbar() {
 
     const options = [
         { to: '/', title: "Home" },
-        { to: '/signin', title: "Log in" },
+        { to: '/signin', title: "Login" },
         { to: '/signup', title: "Register" }
     ]
 

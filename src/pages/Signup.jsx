@@ -5,6 +5,7 @@ import { Link as Anchor, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 
 
+
 export default function Signup() {
   const navigate = useNavigate()
   const name = useRef()
@@ -24,6 +25,7 @@ export default function Signup() {
     console.log(data)
   }
   return (
+
     <div className='w-screen m-0 z-40'>
       <section className='flex  w-screen  h-screen justify-center'>
         <img src={arrow} alt="" className='absolute left-4 top-16 w-8 h-4 ' />
@@ -65,5 +67,6 @@ export default function Signup() {
       </section>
 
     </div>
+            
   )
 }
