@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import Logo from "../../public/Images/Logo.png"
+import Logo from "/Images/Logo.png"
 import { Link as Anchor } from 'react-router-dom';
 
 export default function Navbar() {

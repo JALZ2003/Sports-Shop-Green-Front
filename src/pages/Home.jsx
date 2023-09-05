@@ -1,7 +1,7 @@
-import SportWear from "../../public/Images/SportWear.png"
-import Accesories from "../../public/Images/Accesories.png"
-import Equipements from "../../public/Images/Equipements.png"
-import Tennis from "../../public/Images/Tennis.png"
+import SportWear from "/Images/SportWear.png"
+import Accesories from "/Images/Accesories.png"
+import Equipements from "/Images/Equipements.png"
+import Tennis from "/Images/Tennis.png"
 import Carrousel from "../components/Carrousel"
 
 

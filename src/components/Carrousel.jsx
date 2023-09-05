@@ -1,9 +1,7 @@
-
-import React from "react";
-import Banner1 from "../../public/Images/Banner1.png"
-import Banner2 from "../../public/Images/Banner2.png"
-import Banner3 from "../../public/Images/Banner3.png"
-import Banner4 from "../../public/Images/Banner4.png"
+import Banner1 from "/Images/Banner1.png"
+import Banner2 from "/Images/Banner2.png"
+import Banner3 from "/Images/Banner3.png"
+import Banner4 from "/Images/Banner4.png"
 import { useState, useEffect } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs"
 import { RxDotFilled } from "react-icons/rx"
