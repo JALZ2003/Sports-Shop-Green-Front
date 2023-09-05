@@ -6,8 +6,7 @@ import payment from "/Images/payment.png"
 
 export default function Footer() {
     return (
-        <footer className="justify-between w-full md:h-[500px] h-screen md:flex-row flex-col-reverse flex">
-       
+        <footer className="justify-between w-full md:h-[500px] h-screen md:flex-row flex-col-reverse flex">       
           <div className="md:w-5/12 w-full text-white bg-[#03224B] text-center flex flex-col items-center justify-around pb-5">
             <img className="" src={logo2} alt='logo' />
             <p className="text-xl font-bold px-5 py-5">Ignite Your Momentum, Elevate Your Sports!</p>
@@ -18,9 +17,7 @@ export default function Footer() {
                 <p className="pt-4 text-2xl font-bold">Payment Methods</p>
                 <img src={payment} alt="" />
             </div>
-
             <div className="border border-solid border-gray-400"></div>
-
             <div className="w-full h-full py-5 flex justify-around">
                 <div>
                     <p className="text-xl font-bold">Products</p>
@@ -35,7 +32,6 @@ export default function Footer() {
                     <p>About Us</p>
                     <p>Mission & Vision</p>
                 </div>
-
             </div>
           </div>
           <div className="md:w-1/12 w-full bg-[#03224B] p-2 md:h-full flex md:flex-col justify-around items-center">
@@ -44,6 +40,5 @@ export default function Footer() {
            <img src={youtube} className="w-[50px] h-[50px]" alt="" />
           </div>
       </footer>
-
     )
 }
