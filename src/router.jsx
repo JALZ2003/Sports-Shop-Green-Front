@@ -7,14 +7,13 @@ import Signup from './pages/Signup'
 
 const router = createBrowserRouter([
     {
-        path:'/',
+        path: '/',
         element: <Main />,
         children: [
-            { path:'/', element: <Home /> },
-            { path:'/signin', element: <Signin /> },
-            { path:'/signup', element: <Signup /> },
+            { path: '/', element: <Home /> },
         ]
-    }
+    }, { path: '/signin', element: <Signin /> },
+    { path: '/signup', element: <Signup /> },
 ])
 
 export default router

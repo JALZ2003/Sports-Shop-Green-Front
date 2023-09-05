@@ -6,14 +6,16 @@ import payment from "/Images/payment.png"
 
 export default function Footer() {
     return (
-        <footer className=" mt-[500px] justify-between w-full h-[500px] md:flex-row flex-col-reverse flex">
+        <footer className="w-[100%] md:h-[500px] 2xl:-top-[252px] md:flex-row flex-col-reverse flex justify-between">
         
-          <div className="md:w-5/12 w-full text-white bg-[#03224B] flex flex-col items-center justify-around ">
-            <img className="mt-5" src={logo2} alt='logo' />
-            <p className="text-xl">Ignite Your Momentum, Elevate Your Sports!</p>
-            <p>Copyright</p>
+          <div className="md:w-5/12 w-full h-full text-white bg-[#03224B] flex flex-col items-center justify-between">
+            <div className="mt-5">
+            <img  src={logo2} alt='logo' />
+            <p className="text-xl text-center mb-3">Ignite Your Momentum, Elevate Your Sports!</p>
+            </div>
+            <p className="mb-5">Copyright</p>
           </div>
-          <div className="md:w-5/12 w-full bg-white flex flex-col h-full">
+          <div className="md:w-5/12 w-full bg-white flex flex-col h-[500px] md:h-full">
             <div className="w-full h-[50vh] flex flex-col items-center justify-center">
                 <p className="pt-4 text-2xl">Payment Methods</p>
                 <img src={payment} alt="" />
@@ -38,7 +40,7 @@ export default function Footer() {
 
             </div>
           </div>
-          <div className="md:w-1/12 w-full bg-[#03224B] h-96 md:h-full flex md:flex-col justify-around items-center">
+          <div className="md:w-1/12 w-full bg-[#03224B] h-[70px] md:h-full flex md:flex-col justify-around items-center">
            <img src={instagram} className="w-[50px]" alt="" />
            <img src={facebook} className="w-[50px]" alt="" />
            <img src={youtube} className="w-[50px]" alt="" />
