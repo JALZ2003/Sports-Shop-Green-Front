@@ -30,7 +30,7 @@ export default function Navbar() {
                             </Anchor>
                         </div>
                         <div className="hidden pr-4 items-center sm:flex">
-                            <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 flex  ${login ? ('opacity-100 ') : ('opacity-0 ')}`}>
+                            <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 relative flex ${login ? ('opacity-100 top-[0px]') : ('opacity-0 top-[-500px]')}`}>
                                 <li className=" w-full bg-gray-200 rounded-l-lg px-2 hover:bg-gray-300 flex justify-center">
                                     <Anchor to="/signin" onClick={() => setLogin(!login)} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Log in</Anchor>
                                 </li>
@@ -48,7 +48,7 @@ export default function Navbar() {
                     </span>
                 </div>
 
-                <ul className={`transition-all ease-in duration-500 w-full pl-4 pb-2 bg-gray-200  ${show ? ('opacity-100 top-[80px]') : ('opacity-0 top-[-500px]')}`}>
+                <ul className={`transition-all ease-in duration-500 w-full pl-4 pb-2 bg-gray-200 relative ${show ? ('opacity-100 top-[0px]') : ('opacity-0 top-[-500px]')}`}>
                     {options?.map((each, index) =>
                         <li className="py-2 w-full bg-gray-200" key={index}>
                             <Anchor onClick={() => setShow(!show)} key={index} to={each.to}>
