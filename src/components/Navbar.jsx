@@ -1,14 +1,13 @@
-import { useState } from "react";
-
+import { useState, useRef, useEffect } from "react";
 import Logo from "../../public/Images/Logo.png"
 import { Link as Anchor } from 'react-router-dom';
-
-
 
 export default function Navbar() {
 
     const [show, setShow] = useState(false)
     const [login, setLogin] = useState(false)
+    const menuIcon = useRef(null)
+    const userIcon = useRef(null)
 
     const options = [
         { to: '/', title: "Home" },
@@ -16,14 +15,31 @@ export default function Navbar() {
         { to: '/signup', title: "Register" }
     ]
 
+    const handleCloseMenu = (event) => {
+        const isClickInside = menuIcon.current.contains(event.target)
+        if (menuIcon.current !== event.target && !isClickInside) {
+            setShow(false)
+        }
+
+        if (userIcon.current !== event.target && !isClickInside) {
+            setLogin(false)
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('click', handleCloseMenu)
+        return () => document.removeEventListener('click', handleCloseMenu)
+    }, [])
+
     return (
         <>
-            <nav className="absolute w-full top-0 z-20 ">
+            <nav className="absolute w-full top-0 z-20">
                 <div className="bg-white">
                     <span className="flex justify-between items-center">
-                        <svg onClick={() => setShow(!show)} className="cursor-pointer hover:scale-110 transition w-10 h-10 ml-4 mt-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <svg onClick={() => setShow(!show)} ref={menuIcon} className="cursor-pointer hover:scale-110 transition w-10 h-10 ml-4 mt-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
+
                         <div>
                             <Anchor to="/">
                                 <img className="mt-[20px] sm:ml-[50%] w-[193px] h-[52px]" src={Logo} alt='logo'></img>
@@ -38,7 +54,7 @@ export default function Navbar() {
                                     <Anchor to="/signup" onClick={() => setLogin(!login)} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Register</Anchor>
                                 </li>
                             </ul>
-                            <svg onClick={() => setLogin(!login)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-12 h-12 pt-2 pr-2 cursor-pointer transition hover:scale-110">
+                            <svg onClick={() => setLogin(!login)} ref={userIcon} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-12 h-12 pt-2 pr-2 cursor-pointer transition hover:scale-110">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                             </svg>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-12 h-12 pt-2 pl-2 cursor-pointer transition hover:scale-110">
