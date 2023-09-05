@@ -1,36 +1,47 @@
-import React from 'react'
-import Banner1 from "/Images/Banner1.png"
-import BtonGoogle from '../components/BtonGoogle'
+import Google from "/Images/Google.png"
+import img from '/Images/FondoM.jpeg'
+import arrow from '/Images/Arrow.png'
+import { Link as Anchor } from 'react-router-dom'
 
 export default function Signin() {
   return (
-    <nav className='flex '>
-      <div className=' bg-slate-100 relative '>
-      </div>
-      <div className=' bg-white w-[420px] h-[700px] z-10 mt-24 ml-5 xl:bg-opacity-70 xl:ml-[35%] xl:w-[30%]'>
-        <div className='justify-items-centerer items-center relative lg:ml-2'>
-          <h1 className='font-sans text-5xl text-black text-center mt-14 lg:mt-14 '>Connect!</h1>
-          <h2 className=' text-black text-center mt-1 text-lg font-medium'>Enjoy all our products</h2>
-          <div className='mt-12'>
-            <h3 className=' text-black ml-8 font-medium' >Email</h3>
-            <input className='w-[85%] ml-8 h-12  bg-slate-300 rounded-md ' />
-            <h3 className=' text-black ml-8  mt-10 font-medium'>Password</h3>
-            <input className='w-[85%] ml-8 h-12 bg-slate-300 rounded-md' />
+
+    <div className='flex w-full h-screen justify-center'>
+      <Anchor to={'/'}><img src={arrow} alt="" className='absolute left-10 top-10 w-8 h-4' /></Anchor>
+      <div className='bg-[#EDAF92] h-full w-full flex flex-col justify-center items-end md:pr-[10%] md:py-20 bg-no-repeat bg-cover bg-center' style={{ backgroundImage: `url(${img})` }}>
+        <form className='flex flex-col items-center justify-center w-full md:w-[65%] lg:w-[45%] h-full py-8 bg-white bg-opacity-20 md:bg-opacity-40 md:rounded-2xl text-white' >
+          <h1 className='font-semibold text-lg py-5'>CONNECT!</h1>
+          <h2 className='text-center font-semibold'>Enjoy all our products</h2>
+          <div className='flex flex-col py-5 w-full items-center'>
+            <div className='flex flex-col w-[50%]'>
+              <label className='font-light text-sm'>Email</label>
+              <input type="text" className='rounded-lg mb-7 font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-8' />
+              <label className='font-light text-sm'>Password</label>
+              <input type="text" className='rounded-lg font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-8' />
+            </div>
+
+            <div className='mt-5 flex flex-col items-center'>
+            <input type="buttom"  placeholder='SIGN IN' className='bg-[#EC6B2F] rounded-lg py-2 w-[70%] flex mt-4 hover:border-2 border-orange-500 text-center placeholder-white' />
+
+            {/* < BtonGoogle/> */}
+            <button className="flex bg-white text-black py-2 w-[70%] rounded-lg justify-center mt-5"><span className="pr-2"><img className='w-6 bg-white' src={Google} /></span> Google </button>
+            <h2 className=' text-center mt-10 ml-1 '>Don't have an account yet? <Anchor to="/signup" className='font-bold'>Register here!</Anchor></h2>
+            
           </div>
-          <div className='mt-9'>
-            <input className=' bg-orange-600 bg-current rounded-full w-[60%] h-12 ml-[20%] text-black font-bold  lg:ml-[20%]'
-            type='button' 
-            value='Sign in'/>
-            < BtonGoogle/>
-            <h2 className=' text-center mt-10 ml-1 '>Don't have an account yet? Register here!!</h2>
-            <input className=' rounded-md bg-slate-400 mt-2 ml-16 w-[70%] h-12'
-            type='button'
-            value='Create an account'/>
           </div>
-        </div>
+
+        </form>
+
       </div>
-      <img className='hidden sm:block xl:w-[100%] xl:absolute xl:h-[100%] xl:bg-cover'
-          src={Banner1}></img>
-    </nav>
+    </div>
+    // <nav className='flex '>
+    //   <div className=' bg-slate-100 relative '>
+    //   </div>
+    //   <div className=' bg-white w-[420px] h-[700px] z-10 mt-24 ml-5 xl:bg-opacity-70 xl:ml-[35%] xl:w-[30%]'>
+
+    //   </div>
+    //   <img className='hidden sm:block xl:w-[100%] xl:absolute xl:h-[100%] xl:bg-cover'
+    //       src={Banner1}></img>
+    // </nav>
   )
 }
