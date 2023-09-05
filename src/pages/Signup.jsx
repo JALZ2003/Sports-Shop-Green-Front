@@ -28,10 +28,11 @@ export default function Signup() {
 
     <div className='w-screen m-0 z-40'>
       <section className='flex  w-screen  h-screen justify-center'>
-        <img src={arrow} alt="" className='absolute left-4 top-16 w-8 h-4 ' />
-        <div className='w-1/2 h-screen   object-cover bg-blue-300 hidden md:flex md:items-center'><img src={img} alt="marca" /></div>
+        <Anchor to={'/'}><img src={arrow} alt="" className='absolute left-4 top-24 w-8 h-4 ' />
+          </Anchor> 
+        <div className='w-1/2 h-screen   object-cover  hidden md:flex md:items-center'><img src={img} alt="marca" /></div>
 
-        <div className='bg-[#EDAF92] h-full w-full md:w-1/2  flex flex-col  justify-center items-center'>
+        <div className='bg-[#EDAF92] h-full w-screen md:w-1/2  flex flex-col  justify-center items-center'>
           <h1 className='font-semibold md:-mt-64 lg:mt-20'>CREATE AN ACCOUNT!</h1>
           <form className='mt-12 flex flex-col items-center justify-center h-80 '>
 
@@ -61,7 +62,7 @@ export default function Signup() {
             </div>
             <label ref={authorize} className='font-light text-[10px] m-2 flex w-5/6 mt-4 ' htmlFor="authorize"> <input type="checkbox" className='  h-8 m-2' />I declare that I have read and authorize the use of my personal data according to Terms and Conditions of Mometum X.</label>
             <input type="buttom" onClick={signUp_data} placeholder='REGISTER' className='bg-[#EC6B2F] rounded-lg  flex mt-4 hover:border-2 border-orange-500 text-center placeholder-white' />
-            <h3 className='font-thin mt-6'>Already have an account? {" "} <Anchor href='/signin' >Signin</Anchor></h3>
+            <h3 className='font-thin mt-6'>Already have an account? {" "} <Anchor to={'/signin'} >Signin</Anchor></h3>
           </form>
         </div>
       </section>
