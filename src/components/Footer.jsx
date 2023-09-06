@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="md:w-5/12 w-full bg-white flex flex-col h-full">
         <div className="w-full h-full flex flex-col items-center justify-center">
           <p className="pt-4 text-2xl font-bold">Payment Methods</p>
-          <img src={payment} className="mt-4" alt="" />
+          <img src={payment} className="mt-5" alt="" />
         </div>
 
         <div className="border border-solid border-gray-400"></div>
