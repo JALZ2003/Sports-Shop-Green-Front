@@ -12,7 +12,8 @@ export default function Navbar() {
     const options = [
         { to: '/', title: "Home" },
         { to: '/signin', title: "Login" },
-        { to: '/signup', title: "Register" }
+        { to: '/signup', title: "Register" },
+        { to: '/shop', title: "Shop" }
     ]
 
     const handleCloseMenu = (event) => {
@@ -33,7 +34,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="absolute w-full top-0 z-20">
+            <nav className="absolute w-full top-0 z-10">
                 <div className="bg-white">
                     <span className="flex justify-between items-center">
                         <svg onClick={() => setShow(!show)} ref={menuIcon} className="cursor-pointer hover:scale-110 transition w-10 h-10 ml-4 mt-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
