@@ -11,7 +11,17 @@ export default function CardCart() {
                     <p className="mt-[1px]">Price: $20</p>
                 </div>
                 <p className="lg:text-[20px] lg:w-[50vw]">In Stock</p>
-                <input type="number" name="" id="" defaultValuevalue="1" className="md:w-16 md:h-10 w-9 h-6 rounded-sm text-center border-[1px] border-[#000000]" />
+                <div>
+                    
+                    <select id="cantidad" className="px-2 py-1 border border-gray-300 rounded-md">
+                       
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        
+                    </select>
+                </div>
+                {/* <input type="number" name="" id="" defaultValuevalue="1" className="md:w-16 md:h-10 w-9 h-6 rounded-sm text-center border-[1px] border-[#000000]" /> */}
             </div>
             <p className="mr-2 font-semibold text-[20px] hover:cursor-pointer">X</p>
         </div>
