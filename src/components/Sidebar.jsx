@@ -11,12 +11,12 @@ const Sidebar = () => {
     return (
         <>
             <div
-                className={`w-[80%] sm:w-[40%] lg:max-w-[300px] fixed lg:static top-20 ${showSidebar ? "left-0" : "-left-full"
+                className={`w-[80%] sm:w-[40%] lg:max-w-[300px] z-20 fixed lg:static rounded-lg top-20 ${showSidebar ? "left-0" : "-left-full"
                     } h-full lg:h-auto text-white transition-all bg-blue p-4 lg:p-0 shadow-2xl lg:shadow-none ${showSidebar ? "lg:rounded-lg" : ""
                     }`}
             >
                 {/* Search */}
-                <div className="bg-blue/50 rounded-2xl p-4 mb-4">
+                <div className=" rounded-2xl p-4 mb-4 z-20">
                     <h4 className="my-4 text-white text-lg font-semibold">Brands</h4>
                     <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">

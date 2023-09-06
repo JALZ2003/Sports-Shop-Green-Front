@@ -7,7 +7,7 @@ import payment from "/Images/payment.png"
 export default function Footer() {
   return (
     <footer className="justify-between w-full md:h-[500px] h-full md:flex-row flex-col-reverse flex ">
-      <div className="md:w-5/12 w-full text-white bg-[#03224B] text-center flex flex-col items-center justify-around pb-5">
+      <div className="md:w-5/12 w-full text-white bg-blue text-center flex flex-col items-center justify-around pb-5">
         <img className="" src={logo2} alt='logo' />
         <p className="text-xl font-bold px-5 py-5">Ignite Your Momentum, Elevate Your Sports!</p>
         <p>© Copyright</p>
@@ -37,7 +37,7 @@ export default function Footer() {
 
         </div>
       </div>
-      <div className="md:w-1/12 w-full bg-[#03224B] p-2 md:h-full flex md:flex-col justify-around items-center">
+      <div className="md:w-1/12 w-full bg-blue p-2 md:h-full flex md:flex-col justify-around items-center">
         <img src={instagram} className="w-[50px] h-[50px]" alt="" />
         <img src={facebook} className="w-[65px] h-[60px]" alt="" />
         <img src={youtube} className="w-[50px] h-[50px]" alt="" />

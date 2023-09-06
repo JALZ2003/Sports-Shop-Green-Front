@@ -34,7 +34,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="absolute w-full top-0 z-10">
+            <nav className="absolute w-full top-0">
                 <div className="bg-white">
                     <span className="flex justify-between items-center">
                         <svg onClick={() => setShow(!show)} ref={menuIcon} className="cursor-pointer hover:scale-110 transition w-10 h-10 ml-4 mt-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -47,7 +47,7 @@ export default function Navbar() {
                             </Anchor>
                         </div>
                         <div className="hidden pr-4 items-center sm:flex">
-                            <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 relative flex ${login ? ('opacity-100 top-[0px]') : ('opacity-0 top-[-500px]')}`}>
+                            <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 relative flex ${login ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
                                 <li className=" w-full bg-gray-200 rounded-l-lg px-2 hover:bg-gray-300 flex justify-center">
                                     <Anchor to="/signin" onClick={() => setLogin(!login)} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Log in</Anchor>
                                 </li>
@@ -65,7 +65,7 @@ export default function Navbar() {
                     </span>
                 </div>
 
-                <ul className={`transition-all ease-in duration-500 w-full pl-4 pb-2 bg-gray-200 relative ${show ? ('opacity-100 top-[0px]') : ('opacity-0 top-[-500px]')}`}>
+                <ul className={`transition-all ease-in duration-500 w-full pl-4 pb-2 bg-gray-200 relative ${show ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
                     {options?.map((each, index) =>
                         <li className="py-2 w-full bg-gray-200" key={index}>
                             <Anchor onClick={() => setShow(!show)} key={index} to={each.to}>
