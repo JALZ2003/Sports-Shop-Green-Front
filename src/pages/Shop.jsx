@@ -7,7 +7,6 @@ import SearchBar from "../components/SearchBar";
 function Shop() {
     return (
         <div className="min-h-screen flex flex-col mt-16">
-            <Navbar />
             <main className="flex gap-8 p-8 pt-0 mt-10">
                 <Sidebar />
                 <div className="flex-1 h-full flex flex-col justify-center items-cente">
@@ -52,7 +51,6 @@ function Shop() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
     );
 }
