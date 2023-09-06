@@ -2,7 +2,7 @@ import logo2 from "/Images/logo2.png"
 import instagram from "/Images/instagram.png"
 import facebook from "/Images/facebook.png"
 import youtube from "/Images/youtube.png"
-import payment from "/Images/payment.png"
+import payment from "/Images/mercadoPago.png"
 
 export default function Footer() {
   return (
@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="md:w-5/12 w-full bg-white flex flex-col h-full">
         <div className="w-full h-full flex flex-col items-center justify-center">
           <p className="pt-4 text-2xl font-bold">Payment Methods</p>
-          <img src={payment} alt="" />
+          <img src={payment} className="mt-5" alt="" />
         </div>
 
         <div className="border border-solid border-gray-400"></div>
