@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import Logo from "/Images/Logo.png"
 import { Link as Anchor } from 'react-router-dom';
+import apiUrl from "../apiUrl";
+import header from "../header";
+import axios from "axios";
 
 export default function Navbar() {
 
@@ -9,12 +12,24 @@ export default function Navbar() {
     const menuIcon = useRef(null)
     const userIcon = useRef(null)
 
+    const signout = async () => {
+        try {
+            await axios.post(apiUrl + 'auth/signout', null, header())
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.replace('/')
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const options = [
         { to: '/', title: "Home" },
         { to: '/signin', title: "Login" },
         { to: '/signup', title: "Register" },
         { to: '/shop', title: "Shop" },
-        { to: '/panel', title: "Panel Admin" }
+        { to: '/panel', title: "Panel Admin" },
+        { to: '/', title: "Sign Out", onClick: signout },
     ]
 
     const handleCloseMenu = (event) => {
