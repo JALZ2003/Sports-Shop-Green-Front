@@ -3,8 +3,8 @@ import arrow from "/Images/arrowSummary.png"
 
 export default function Summary() {
     return (
-        <div className="w-[120%]">
-            <Anchor to={"/shop"} className="bg-blue text-white flex items-center w-full justify-between h-9 p-3 hover:scale-105">PAY YOUR ORDER! <img src={arrow} className="w-10 h-3 ms-4" alt="" /></Anchor>
+        <div className="w-full">
+            <Anchor to={"/shop"} className="bg-blue text-white flex items-center min-w-full w-full justify-between h-9 p-3 hover:scale-105">PAY YOUR ORDER! <img src={arrow} className="w-10 h-3 ms-4" alt="" /></Anchor>
             <h1 className="font-bold mt-2">ORDER SUMMARY</h1>
             <div className="flex justify-between mt-2">
                 <p>2 products</p>
