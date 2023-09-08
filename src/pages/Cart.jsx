@@ -15,7 +15,7 @@ export default function Cart() {
                     <p className="mt-6">The items in your cart are not reserved. Complete the checkout process now to get them.</p>
                 </div>
                 <div className="border border-solid border-gray-400 mt-2 w-[90%] lg:hidden" ></div>
-                <div className="lg:absolute flex lg:right-[6%] xl:right-[13%] lg:top-32 lg:w-[257px] xl:w-[300px] 2xl:w-[400px] w-[80%] mt-5 mb-5">
+                <div className="lg:absolute flex items-center justify-center lg:right-[4%] xl:right-[13%] lg:top-32 lg:w-[257px] xl:w-[300px] 2xl:w-[400px] w-[80%] mt-5 mb-5">
                     <Summary />
                 </div>
                 <div className="border border-solid border-gray-400 mt-2 w-[90%] lg:hidden" ></div>
