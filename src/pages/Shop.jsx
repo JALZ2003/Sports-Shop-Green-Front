@@ -9,7 +9,7 @@ function Shop() {
         <div className="min-h-screen flex flex-col mt-16">
             <main className="flex gap-8 p-8 pt-0 mt-10">
                 <Sidebar />
-                <div className="flex-1 h-full flex flex-col justify-center items-cente">
+                <div className="flex-1 h-full flex flex-col justify-center">
                     <SearchBar />
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
                         <Card

@@ -11,7 +11,7 @@ const Sidebar = () => {
     return (
         <>
             <div
-                className={`w-[80%] sm:w-[40%] lg:max-w-[300px] z-20 fixed lg:static rounded-lg top-20 ${showSidebar ? "left-0" : "-left-full"
+                className={`w-[80%] sm:w-[40%] lg:max-w-[300px] z-20 fixed lg:static rounded-lg top-0 ${showSidebar ? "left-0" : "-left-full"
                     } h-full lg:h-auto text-white transition-all bg-blue p-4 lg:p-0 shadow-2xl lg:shadow-none ${showSidebar ? "lg:rounded-lg" : ""
                     }`}
             >
@@ -20,40 +20,40 @@ const Sidebar = () => {
                     <h4 className="my-4 text-white text-lg font-semibold">Brands</h4>
                     <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">
-                            <input type="checkbox" id="PC" />
-                            <label htmlFor="PC">Nike</label>
+                            <input type="checkbox" id="Nike" className="accent-orange" />
+                            <label htmlFor="Nike">Nike</label>
                         </div>
                         <div className="flex items-center gap-2">
                             <input
                                 type="checkbox"
-                                id="Playstation 5"
-                                className="accent-orange"
+                                id="Adidas"
+                                className="accent-orange form-checkbox text-black"
                             />
-                            <label htmlFor="Playstation 5">Adidas</label>
+                            <label htmlFor="Adidas">Adidas</label>
                         </div>
                         <div className="flex items-center gap-2">
                             <input
                                 type="checkbox"
-                                id="Playstation 4"
+                                id="Under Armour"
                                 className="accent-orange"
                             />
-                            <label htmlFor="Playstation 4">Under Armour</label>
+                            <label htmlFor="Under Armour">Under Armour</label>
                         </div>
                         <div className="flex items-center gap-2">
                             <input
                                 type="checkbox"
-                                id="Xbox Series"
+                                id="Champions"
                                 className="accent-orange"
                             />
-                            <label htmlFor="Xbox Series">Champions</label>
+                            <label htmlFor="Champions">Champions</label>
                         </div>
                         <div className="flex items-center gap-2">
                             <input
                                 type="checkbox"
-                                id="Nintendo Switch"
+                                id="Reebok"
                                 className="accent-orange"
                             />
-                            <label htmlFor="Nintendo Switch">Reebok</label>
+                            <label htmlFor="Reebok">Reebok</label>
                         </div>
                     </div>
                     <h4 className="my-4 text-white text-lg">Price</h4>

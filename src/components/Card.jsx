@@ -4,7 +4,7 @@ const Card = (props) => {
     const { img, title, category, price } = props;
 
     return (
-        <div className="bg-blue-200 p-1 md:p-2 lg:p-3 rounded-lg shadow-md">
+        <div className="bg-blue-200 p-1 md:p-2 lg:p-3 rounded-lg shadow-md border-2 border-gray-800/10">
             <img
                 src={img}
                 className="w-full h-48 md:h-56 lg:h-64 object-cover rounded-lg border border-gray-300"
