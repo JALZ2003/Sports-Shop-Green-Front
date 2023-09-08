@@ -10,11 +10,11 @@ const Sidebar = () => {
 
     return (
         <>
-            <div
-                className={`w-[80%] sm:w-[40%] lg:max-w-[300px] z-20 fixed lg:static top-0 ${showSidebar ? "left-0" : "-left-full"
-                    } h-full lg:h-auto text-white transition-all bg-blue p-4 lg:p-0 shadow-2xl lg:shadow-none ${showSidebar ? "lg:rounded-lg" : ""
-                    }`}
+            <div className={`w-[80%] sm:w-[40%] lg:max-w-[300px] z-20 fixed top-0  lg:static ${showSidebar ? "left-0 " : "-left-full "
+                } h-full lg:h-auto text-white transition-all bg-blue p-4 lg:p-0 lg:shadow-none ${showSidebar ? "lg:rounded-lg" : "rounded-lg"
+                }`}
             >
+
                 {/* Search */}
                 <div className=" rounded-2xl p-4 mb-4 z-20">
                     <h4 className="my-4 text-white text-lg font-semibold">Brands</h4>
