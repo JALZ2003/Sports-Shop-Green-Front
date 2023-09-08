@@ -9,7 +9,7 @@ import Panel from './pages/Panel'
 import AdminProducts from './pages/AdminProducts'
 import AdminCategories from './pages/AdminCategories'
 import AdminUsers from './pages/AdminUsers'
-
+import Cart from './pages/Cart'
 
 const router = createBrowserRouter([
     {
@@ -17,7 +17,9 @@ const router = createBrowserRouter([
         element: <Main />,
         children: [
             { path: '/', element: <Home /> },
-            { path: '/shop', element: <Shop /> }
+            { path: '/shop', element: <Shop /> },
+            { path: '/cart', element: <Cart /> },
+
         ]
     }, { path: '/signin', element: <Signin /> },
     { path: '/signup', element: <Signup /> },
