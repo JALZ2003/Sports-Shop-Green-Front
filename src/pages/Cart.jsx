@@ -19,8 +19,8 @@ export default function Cart() {
                     <Summary />
                 </div>
                 <div className="border border-solid border-gray-400 mt-2 w-[90%] lg:hidden" ></div>
-                <div className="md:border-[1px] pt-5 md:w-[80%] lg:w-[650px] xl:w-[700px] 2xl:w-[800px] mt-4">
-                <div className="flex flex-col w-full items-center mt-4 mb-8">
+                <div className="md:border-[1px] pt-5 w-full md:w-[80%] lg:w-[650px] xl:w-[700px] 2xl:w-[800px] mt-4">
+                <div className="flex flex-col  w-full items-center mt-4 mb-8">
                     <CardCart />
                     <CardCart />
                     <CardCart />
