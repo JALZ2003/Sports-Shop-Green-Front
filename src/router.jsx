@@ -10,6 +10,7 @@ import AdminProducts from './pages/AdminProducts'
 import AdminCategories from './pages/AdminCategories'
 import AdminUsers from './pages/AdminUsers'
 import Cart from './pages/Cart'
+import Details from './pages/Details'
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
             { path: '/', element: <Home /> },
             { path: '/shop', element: <Shop /> },
             { path: '/cart', element: <Cart /> },
+            { path: '/details', element: <Details />},
 
         ]
     }, { path: '/signin', element: <Signin /> },

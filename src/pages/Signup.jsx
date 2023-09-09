@@ -2,6 +2,10 @@ import img from '/Images/FondoH.jpeg'
 import arrow from '/Images/Arrow.png'
 import { Link as Anchor, useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
+import axios from 'axios'
+import apiUrl from '../../apiUrl.js'
+import Swal from "sweetalert2"
+
 
 export default function Signup() {
   const navigate = useNavigate()
@@ -9,17 +13,30 @@ export default function Signup() {
   const lastName = useRef()
   const email = useRef()
   const password = useRef()
-  const confirmePassword = useRef()
+  const confirmPassword = useRef()
   const authorize = useRef()
 
   const signUp_data = () => {
     let data = {
       name: name.current.value,
-      lastName: name.current.value,
-      password: name.current.value,
-      confirmePassword: name.current.value
+      lastName: lastName.current.value,
+      email: email.current.value,
+      password: password.current.value,
+      confirmPassword: confirmPassword.current.value,
+      authorize: authorize.current.checked
     }
     console.log(data)
+    axios.post(apiUrl + '/auth/register', data)
+      .then((res) => Swal.fire({
+        icon: 'success',
+        text: 'User created!'
+
+      }, setTimeout(() => navigate('/signin'), 2000)))
+      .catch(err => Swal.fire({
+        icon: 'error',
+        text: 'sign in please!',
+        html: err.response.data.messages.map(each => `<p>${each}</p>`).join('')
+      }))
   }
   return (
     <div className='flex w-full min-h-screen justify-center'>
@@ -30,31 +47,31 @@ export default function Signup() {
           <div className='flex flex-row '>
             <div className='flex flex-col justify-between w-40 mr-2'>
               <label className='font-light text-sm ' htmlFor="Name">First Name</label>
-              <input type="text" ref={name} className='rounded-lg mb-7 font-thin px-2 hover:border-2 border-orange-300 focus:border-black-400 active:bg-black-600  h-8' />
+              <input type="text" ref={name} className='rounded-lg mb-7 font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
               <label className='font-light text-sm' htmlFor="email">Email</label>
-              <input type="text" ref={email} className='rounded-lg font-thin px-2 hover:border-2 border-orange-300 focus:border-black-400 active:bg-black-600  h-8' />
+              <input type="text" ref={email} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
             </div>
 
             <div className='flex  flex-col justify-between w-40 ml-2'>
               <label className='font-light text-sm' htmlFor="last name">Last Name</label>
-              <input type="text" ref={lastName} className='rounded-lg mb-7 font-thin px-2 hover:border-2 border-orange-300 focus:border-black-400 active:bg-black-600  h-8' />
+              <input type="text" ref={lastName} className='rounded-lg mb-7 font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
               <label className='font-light text-sm' htmlFor="password">Password</label>
-              <input type="text" ref={password} className='rounded-lg font-thin px-2 hover:border-2 border-orange-300 focus:border-black-400 active:bg-black-600  h-8' />
+              <input type="text" ref={password} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
             </div>
           </div>
 
           <div className='flex  flex-col justify-between w-40 ml-2 mt-8'>
-            <label className='font-light text-sm' htmlFor="confirme pasword">Confirme Password</label>
-            <input type="text" ref={confirmePassword} className='rounded-lg font-thin px-2 hover:border-2 border-orange-300 focus:border-black-400 active:bg-black-600  h-8' />
+            <label className='font-light text-sm' htmlFor="confirme pasword">Confirm Password</label>
+            <input type="text" ref={confirmPassword} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
           </div>
-          <label ref={authorize} className='font-light text-[10px] m-2 flex w-3/4 mt-4 items-center justify-center' htmlFor="authorize">
-            <input type="checkbox" className='h-8 m-2' />
+          <label className='font-light text-[10px] m-2 flex w-3/4 mt-4 items-center justify-center' htmlFor="authorize">
+            <input type="checkbox" ref={authorize} className='h-8 m-2' />
             <p>I declare that I have read and authorize the use of my personal data according to Terms and Conditions of Mometum X.</p>
           </label>
-          <input type="buttom" onClick={signUp_data} placeholder='REGISTER' className='bg-[#EC6B2F] rounded-lg p-2 flex mt-4 hover:border-2 border-orange-500 text-center placeholder-white' />
-          <h3 className='font-thin mt-6'>Already have an account? {" "} <Anchor to={'/signin'} className='font-bold'>Signin!</Anchor></h3>
         </form>
 
+        <button type="buttom" onClick={signUp_data} className='bg-[#EC6B2F]  rounded-lg px-4 py-2 flex mt-4 hover:border-2 border-orange-500 text-center ' >REGISTER</button>
+        <h3 className='font-thin mt-6'>Already have an account? {" "} <Anchor to={'/signin'} className='font-bold'>Signin!</Anchor></h3>
       </div>
     </div>
   )
