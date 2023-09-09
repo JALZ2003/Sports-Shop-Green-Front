@@ -2,8 +2,31 @@ import Google from "/Images/Google.png"
 import img from '/Images/FondoM.jpeg'
 import arrow from '/Images/Arrow.png'
 import { Link as Anchor } from 'react-router-dom'
+import { useRef } from "react"
+import axios from "axios"
+import apiUrl from "../apiUrl.js"
 
 export default function Signin() {
+  const loginForm = async () => {
+    const data = {
+      email: email.current.value?.trim(),
+      password: password.current.value?.trim(),
+    }
+
+    axios.post(apiUrl + 'auth/login', data).then((res) => {
+      localStorage.setItem('token', res.data.response.token);
+      localStorage.setItem('user', JSON.stringify(res.data.response.user));
+      setTimeout(() => window.location.replace('/'), 1000);
+    }).catch((err) => {
+      Swal.fire({
+        icon: 'error',
+        html: err.response.data.messages.map(message => `<p>${message}</p>`).join(''),
+        confirmButtonColor: "#F97316"
+      });
+    });
+  }
+  const email = useRef();
+  const password = useRef();
   return (
 
     <div className='flex w-full min-h-screen justify-center'>
@@ -16,15 +39,15 @@ export default function Signin() {
             <div className='flex flex-col py-5 w-full items-center'>
               <div className='flex flex-col w-[50%]'>
                 <label className='font-light text-sm text-white'>Email</label>
-                <input type="text" className='rounded-lg mb-7 font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
+                <input type="text" ref={email} className='rounded-lg mb-7 font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
                 <label className='font-light text-sm text-white'>Password</label>
-                <input type="text" className='rounded-lg font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
+                <input type="text" ref={password} className='rounded-lg font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
               </div>
             </div>
           </form>
 
           <div className='mt-5 flex flex-col items-center'>
-            <button className='bg-[#EC6B2F] rounded-lg py-2 w-[70%] flex justify-center mt-4 text-center text-white transition hover:scale-105 hover:border'>SIGN IN</button>
+            <button onClick={loginForm} className='bg-[#EC6B2F] rounded-lg py-2 w-[70%] flex justify-center mt-4 text-center text-white transition hover:scale-105 hover:border'>SIGN IN</button>
             <button className="flex bg-white text-black py-2 w-[70%] rounded-lg justify-center mt-5 transition hover:scale-105"><span className="pr-2"><img className='w-6 bg-white' src={Google} /></span> Google </button>
             <h2 className=' text-center mt-10 ml-1 text-white'>Don't have an account yet? <Anchor to="/signup" className='font-bold'>Register here!</Anchor></h2>
           </div>
