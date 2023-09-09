@@ -31,6 +31,7 @@ const Sidebar = ({ categories }) => {
                 <div className=" rounded-2xl p-4 mb-4 z-20">
                     <h4 className="my-4 text-white text-lg font-semibold">Categories</h4>
                     <div className="flex flex-col gap-2">
+
                         {categories.map(category => (
                             <div
                                 key={category._id}
@@ -54,6 +55,7 @@ const Sidebar = ({ categories }) => {
                                 </label>
                             </div>
                         ))}
+
                     </div>
 
                     <h4 className="my-4 text-white text-lg font-semibold">Price</h4>

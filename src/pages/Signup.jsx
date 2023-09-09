@@ -39,10 +39,10 @@ export default function Signup() {
       }))
   }
   return (
-    <div className='flex w-full min-h-full justify-center'>
+    <div className='flex w-full min-h-screen justify-center'>
       <Anchor to={'/'}><img src={arrow} alt="" className='absolute left-10 top-10 w-8 h-4' /></Anchor>
-      <div className=' min-h-screen w-full flex flex-col justify-center items-start md:pl-[15%] md:py-20 bg-no-repeat bg-cover bg-center' style={{ backgroundImage: `url(${img})` }}>
-        <form className='flex flex-col items-center justify-center w-full md:w-[65%] lg:w-[45%] h-full py-8 bg-black bg-opacity-30 md:rounded-2xl text-white' >
+      <div className='min-h-full w-full flex flex-col justify-center items-start md:pl-[15%] md:py-20 bg-no-repeat bg-cover bg-center' style={{ backgroundImage: `url(${img})` }}>
+        <form className='flex flex-col items-center justify-center w-full md:w-[65%] lg:w-[45%] min-h-full py-8 bg-black bg-opacity-30 md:rounded-2xl text-white' >
           <h1 className='font-semibold py-5 text-lg'>CREATE AN ACCOUNT!</h1>
           <div className='flex flex-row '>
             <div className='flex flex-col justify-between w-40 mr-2'>

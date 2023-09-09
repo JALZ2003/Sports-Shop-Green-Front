@@ -10,6 +10,7 @@ import AdminProducts from './pages/AdminProducts'
 import AdminCategories from './pages/AdminCategories'
 import AdminUsers from './pages/AdminUsers'
 import Cart from './pages/Cart'
+import Details from './pages/Details'
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
             { path: '/', element: <Home /> },
             { path: '/products', element: <Shop /> },
             { path: '/cart', element: <Cart /> },
+            { path: '/details', element: <Details />},
 
         ]
     }, { path: '/signin', element: <Signin /> },
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
         children: [
             { path: '/panel', element: <Panel /> },
             { path: '/adminusers', element: <AdminUsers /> },
-            { path: '/adminproducts', element: <AdminProducts /> },
+            { path: '/adminproducts/:page', element: <AdminProducts /> },
             { path: '/admincategories', element: <AdminCategories /> },
         ]
     }
