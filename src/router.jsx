@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         children: [
             { path: '/panel', element: <Panel /> },
             { path: '/adminusers', element: <AdminUsers /> },
-            { path: '/adminproducts', element: <AdminProducts /> },
+            { path: '/adminproducts/:page', element: <AdminProducts /> },
             { path: '/admincategories', element: <AdminCategories /> },
         ]
     }
