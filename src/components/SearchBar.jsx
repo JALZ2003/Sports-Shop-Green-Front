@@ -1,6 +1,6 @@
 const SearchBar = () => {
     return (
-        <div className="relative w-[90%] lg:w-[60%] mx-auto z-10 m-4">
+        <div className="relative w-[90%] lg:w-[60%] mx-auto z-10 mt-0 mb-4">
             <div className="relative flex items-center">
                 <div className="absolute left-0 top-0 w-14 h-full bg-orange flex items-center justify-center rounded-l-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-100 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
