@@ -10,11 +10,7 @@ import apiUrl from "../../apiUrl";
 function Shop() {
     const navigate = useNavigate();
 
-    const [products, setProducts] = useState([]);
-    const [categories, setCategories] = useState([]);
-
-
-    function Shop() {
+        const [categories, setCategories] = useState([]);
         const [products, setProducts] = useState([]);
         const [currentPage, setCurrentPage] = useState(1);
         const [totalPages, setTotalPages] = useState(1);
@@ -101,7 +97,6 @@ function Shop() {
                 </main>
             </div>
         );
-    }
 }
 
 export default Shop;
