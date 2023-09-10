@@ -3,9 +3,18 @@ import Accesories from "/Images/Accesories.png"
 import Equipements from "/Images/Equipements.png"
 import Tennis from "/Images/Tennis.png"
 import Carrousel from "../components/Carrousel"
-
-
+import { useSelector, useDispatch } from "react-redux"
+// import { useState, useEffect } from "react"
+// import { useParams } from "react-router-dom"
+import categories_actions from "../store/actions/categories"
+const {read_categories} = categories_actions
+import apiUrl from "../apiUrl"
 export default function Home() {
+
+    const name = useSelector(store => store.categories)
+    console.log(name)
+    // const {name, color} = categories
+    
     return (
         <>
             <main className="flex-col justify-around mt-14 pb-10">
@@ -14,7 +23,7 @@ export default function Home() {
             
                     <div className="flex-col w-[300px] lg:w-[22%] h-[300px] object-cover rounded-2xl overflow-hidden  shadow-lg">
                         <div className=" flex items-end justify-center pb-10 h-full w-full bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(${SportWear})` }}>
-                            <span className=" flex justify-center  items-center w-[80%] lg:w-[80%] h-16 rounded-md  text-2xl md:text-xl  lg:text-2xl font-bold text-gray-800  bg-gray-100  bg-opacity-60 drop-shadow-2xl">SPORTWEAR</span>
+                            <span className=" flex justify-center  items-center w-[80%] lg:w-[80%] h-16 rounded-md  text-2xl md:text-xl  lg:text-2xl font-bold text-gray-800  bg-gray-100  bg-opacity-60 drop-shadow-2xl">category 1</span>
                         </div>
                     </div>
 
