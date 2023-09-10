@@ -41,7 +41,7 @@ export default function Signin() {
                 <label className='font-light text-sm text-white'>Email</label>
                 <input type="text" ref={email} className='rounded-lg mb-7 font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
                 <label className='font-light text-sm text-white'>Password</label>
-                <input type="text" ref={password} className='rounded-lg font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
+                <input type="password" ref={password} className='rounded-lg font-thin px-2 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
               </div>
             </div>
           </form>

@@ -13,6 +13,7 @@ export default function Navbar() {
     const userIcon = useRef(null)
 
     const signout = async () => {
+
         try {
             await axios.post(apiUrl + 'auth/signout', null, header())
             localStorage.removeItem('token');
@@ -92,14 +93,23 @@ export default function Navbar() {
                             </Anchor>
                         </div>
                         <div className="hidden pr-4 items-center sm:flex">
-                            <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 relative flex ${login ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
-                                <li className=" w-full bg-gray-200 rounded-l-lg px-2 hover:bg-gray-300 flex justify-center">
-                                    <Anchor to="/signin" onClick={() => setLogin(!login)} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Log in</Anchor>
-                                </li>
-                                <li className=" w-full bg-gray-200 rounded-r-lg px-2 hover:bg-gray-300 flex justify-center" >
-                                    <Anchor to="/signup" onClick={() => setLogin(!login)} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Register</Anchor>
-                                </li>
-                            </ul>
+                            {user ? (
+                                <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 relative flex ${login ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
+                                    <li className=" w-full bg-gray-200 rounded-lg px-2 hover:bg-gray-300 flex justify-center">
+                                        <Anchor to="/" onClick={signout} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Sign Out</Anchor>
+                                    </li>
+                                </ul>
+                            ) : (
+                                <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 relative flex ${login ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
+                                    <li className=" w-full bg-gray-200 rounded-l-lg px-2 hover:bg-gray-300 flex justify-center">
+                                        <Anchor to="/signin" onClick={() => setLogin(!login)} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Log in</Anchor>
+                                    </li>
+                                    <li className=" w-full bg-gray-200 rounded-r-lg px-2 hover:bg-gray-300 flex justify-center" >
+                                        <Anchor to="/signup" onClick={() => setLogin(!login)} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Register</Anchor>
+                                    </li>
+                                </ul>
+                            )}
+
                             <svg onClick={() => setLogin(!login)} ref={userIcon} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-12 h-12 pt-2 pr-2 cursor-pointer transition hover:scale-110">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                             </svg>
@@ -111,12 +121,12 @@ export default function Navbar() {
 
                         </div>
                     </span>
-                </div>
+                </div >
 
                 <ul className={`transition-all ease-in duration-500 w-full pl-4 pb-2 bg-gray-200 relative ${show ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
                     {options?.map((each, index) =>
                         <li className="py-2 w-full bg-gray-200" key={index}>
-                            <Anchor onClick={() => setShow(!show)} key={index} to={each.to}>
+                            <Anchor onClick={each.onClick} key={index} to={each.to}>
                                 <div className='text-black font-poppins text-center text-[18px] font-semibold leading-6 rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 hover:scale-110 transition p-2 w-[200px]'>
                                     {each.title}
                                 </div>
@@ -124,7 +134,7 @@ export default function Navbar() {
                         </li>
                     )}
                 </ul>
-            </nav>
+            </nav >
         </>
     )
 }
