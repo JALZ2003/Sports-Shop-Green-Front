@@ -5,8 +5,20 @@ import {
     RiCloseLine,
 } from "react-icons/ri";
 
-const Sidebar = () => {
+const Sidebar = ({ categories }) => {
     const [showSidebar, setShowSidebar] = useState(false);
+    const [checkedCategories, setCheckedCategories] = useState({});
+
+    const handleCheckboxChange = (categoryId) => {
+        setCheckedCategories(prevState => ({
+            ...prevState,
+            [categoryId]: !prevState[categoryId]
+        }));
+    };
+
+    const handleLabelClick = (color) => {
+        console.log(color);
+    };
 
     return (
         <>
@@ -17,46 +29,36 @@ const Sidebar = () => {
 
                 {/* Search */}
                 <div className=" rounded-2xl p-4 mb-4 z-20">
-                    <h4 className="my-4 text-white text-lg font-semibold">Brands</h4>
+                    <h4 className="my-4 text-white text-lg font-semibold">Categories</h4>
                     <div className="flex flex-col gap-2">
-                        <div className="flex items-center gap-2">
-                            <input type="checkbox" id="Nike" className="accent-orange" />
-                            <label htmlFor="Nike">Nike</label>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <input
-                                type="checkbox"
-                                id="Adidas"
-                                className="accent-orange form-checkbox text-black"
-                            />
-                            <label htmlFor="Adidas">Adidas</label>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <input
-                                type="checkbox"
-                                id="Under Armour"
-                                className="accent-orange"
-                            />
-                            <label htmlFor="Under Armour">Under Armour</label>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <input
-                                type="checkbox"
-                                id="Champions"
-                                className="accent-orange"
-                            />
-                            <label htmlFor="Champions">Champions</label>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <input
-                                type="checkbox"
-                                id="Reebok"
-                                className="accent-orange"
-                            />
-                            <label htmlFor="Reebok">Reebok</label>
-                        </div>
+
+                        {categories.map(category => (
+                            <div
+                                key={category._id}
+                                className={`flex flex-col justify-between bg-slate-950`}
+                                style={{ backgroundColor: checkedCategories[category._id] ? category.color : '' }}
+                            >
+                                <input
+                                    type="checkbox"
+                                    id={category._id}
+                                    value={category._id}
+                                    className={`appearance-none h-1 w-full bg-gray-400 transition-all duration-300`}
+                                    checked={checkedCategories[category._id] || false}
+                                    onChange={() => handleCheckboxChange(category._id)}
+                                />
+                                <label
+                                    htmlFor={category._id}
+                                    className='p-1 flex flex-row justify-center px-2 select-none text-white'
+                                    onClick={() => handleLabelClick(category.color)}
+                                >
+                                    {category.name}
+                                </label>
+                            </div>
+                        ))}
+
                     </div>
-                    <h4 className="my-4 text-white text-lg">Price</h4>
+
+                    <h4 className="my-4 text-white text-lg font-semibold">Price</h4>
                     <form className="flex flex-col gap-8">
                         <div className="flex items-center justify-between gap-4">
                             <div className="relative">

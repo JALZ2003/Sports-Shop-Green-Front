@@ -5,7 +5,7 @@ export default function NavbarAdmin() {
 
     const options = [
         { to: '/adminusers', title: "Users" },
-        { to: '/adminproducts', title: "Products" },
+        { to: '/adminproducts/1', title: "Products" },
         { to: '/admincategories', title: "Categories" }
     ]
     return (
