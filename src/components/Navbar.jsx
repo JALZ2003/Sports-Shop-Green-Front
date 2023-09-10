@@ -49,6 +49,7 @@ export default function Navbar() {
                     setOptions([
                         { to: '/', title: "Home" },
                         { to: '/shop', title: "Shop" },
+                        { to: '/seller-form', title: "Sell with us" },
                         { to: '/', title: "Sign Out", onClick: signout },
                     ]);
                 } else if (user.role === 1) {
