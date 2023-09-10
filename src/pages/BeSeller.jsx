@@ -5,16 +5,19 @@ import apiUrl from '../../apiUrl.js'
 import Swal from "sweetalert2"
 import seller from '/Images/seller.jpg'
 import { useRef } from 'react'
+import header from '../header.js'
 
 export default function BeSeller() {
   const beSell = () => {
     let data = {
-      company: company.current.value,
+      name: name.current.value,
+      lastname: lastname.current.value,
+      country: country.current.value,
       country: country.current.value,
       city: city.current.value
     }
     console.log(data)
-    axios.post(apiUrl + '/creators', data)
+    axios.post(apiUrl + '/creators', data, header())
       .then((res) => Swal.fire({
         icon: 'success',
         text: 'Seller created!'
@@ -26,6 +29,8 @@ export default function BeSeller() {
         html: err.response.data.messages.map(each => `<p>${each}</p>`).join('')
       }))
   }
+  const name = useRef();
+  const lastname = useRef();
   const company = useRef();
   const country = useRef();
   const city = useRef();
@@ -37,7 +42,11 @@ export default function BeSeller() {
           <h1 className='font-semibold py-5 text-2xl'>SELL YOUR PRODUCTS!</h1>
           <div className='flex flex-row mt-10 w-full'>
             <div className='flex flex-col justify-between items-center w-full'>
-              <label className='font-light text-sm w-[50%] text-left' htmlFor="Name">Company</label>
+            <label className='font-light text-sm w-[50%] text-left' htmlFor="Name">Name</label>
+              <input type="text" ref={name} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8 w-[50%]' />
+              <label className='mt-7 font-light text-sm w-[50%] text-left' htmlFor="email">Lastname</label>
+              <input type="text" ref={lastname} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8 w-[50%]' />
+              <label className='mt-7 font-light text-sm w-[50%] text-left' htmlFor="Name">Company</label>
               <input type="text" ref={company} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8 w-[50%]' />
               <label className='mt-7 font-light text-sm w-[50%] text-left' htmlFor="email">Country</label>
               <input type="text" ref={country} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8 w-[50%]' />
