@@ -1,3 +1,1 @@
-let apiUrl = "http://localhost:8080/api/"
-
-export default apiUrl
+export default "http://localhost:8080/api/";
