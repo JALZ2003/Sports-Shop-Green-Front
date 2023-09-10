@@ -50,14 +50,14 @@ export default function Signup() {
                 <label className='font-light text-sm text-white' htmlFor="Name">First Name</label>
                 <input type="text" ref={name} className='rounded-lg mb-7 font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
                 <label className='font-light text-sm text-white' htmlFor="password">Password</label>
-                <input type="text" ref={password} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
+                <input type="password" ref={password} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
               </div>
 
               <div className='flex  flex-col justify-between w-52 ml-2'>
                 <label className='font-light text-sm text-white' htmlFor="last name">Last Name</label>
                 <input type="text" ref={lastName} className='rounded-lg mb-7 font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
                 <label className='font-light text-sm text-white' htmlFor="confirme pasword">Confirm Password</label>
-                <input type="text" ref={confirmPassword} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
+                <input type="password" ref={confirmPassword} className='rounded-lg font-thin px-2 text-black focus:border-black-400 active:bg-black-600  h-8' />
               </div>
             </div>
 
