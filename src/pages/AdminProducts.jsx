@@ -26,10 +26,6 @@ export default function AdminProducts() {
   }
 
   useEffect(() => {
-    axios.get(apiUrl + "categories").then(res => setCategories(res.data.response)).catch(error => { console.log(error) });
-  }, [])
-
-  useEffect(() => {
     axios.get(apiUrl + `products/admi?name=${productsStore.name}&page=1`)
       .then(res => {
         setProducts(res.data.response.products)

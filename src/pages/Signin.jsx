@@ -31,7 +31,7 @@ export default function Signin() {
 
     <div className='flex w-full min-h-screen justify-center'>
       <Anchor to={'/'}><img src={arrow} alt="" className='absolute left-10 top-10 w-8 h-4' /></Anchor>
-      <div className='bg-[#EDAF92] min-h-full w-full flex flex-col justify-center items-end md:pr-[10%] md:py-20 bg-no-repeat bg-cover bg-center' style={{ backgroundImage: `url(${img})` }}>
+      <div className='min-h-full w-full flex flex-col justify-center items-end md:pr-[10%] md:py-20 bg-no-repeat bg-cover bg-center' style={{ backgroundImage: `url(${img})` }}>
         <div className="flex flex-col items-center justify-center w-full md:w-[65%] lg:w-[45%] min-h-full py-8 bg-white bg-opacity-20 md:bg-opacity-40 md:rounded-2xl">
           <form className='flex flex-col items-center justify-center w-full' >
             <h1 className='font-semibold text-lg py-5 text-white'>CONNECT!</h1>
@@ -48,7 +48,7 @@ export default function Signin() {
 
           <div className='mt-5 flex flex-col items-center'>
             <button onClick={loginForm} className='bg-[#EC6B2F] rounded-lg py-2 w-[70%] flex justify-center mt-4 text-center text-white transition hover:scale-105 hover:border'>SIGN IN</button>
-            <button className="flex bg-white text-black py-2 w-[70%] rounded-lg justify-center mt-5 transition hover:scale-105"><span className="pr-2"><img className='w-6 bg-white' src={Google} /></span> Google </button>
+            {/* <button className="flex bg-white text-black py-2 w-[70%] rounded-lg justify-center mt-5 transition hover:scale-105"><span className="pr-2"><img className='w-6 bg-white' src={Google} /></span> Google </button> */}
             <h2 className=' text-center mt-10 ml-1 text-white'>Don't have an account yet? <Anchor to="/signup" className='font-bold'>Register here!</Anchor></h2>
           </div>
         </div>
