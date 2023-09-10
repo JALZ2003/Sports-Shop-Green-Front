@@ -23,15 +23,6 @@ export default function Navbar() {
         }
     }
 
-    const options = [
-        { to: '/', title: "Home" },
-        { to: '/signin', title: "Login" },
-        { to: '/signup', title: "Register" },
-        { to: '/products', title: "Shop" },
-        { to: '/panel', title: "Panel Admin" },
-        { to: '/', title: "Sign Out", onClick: signout },
-    ]
-
     const handleCloseMenu = (event) => {
         const isClickInside = menuIcon.current.contains(event.target)
         if (menuIcon.current !== event.target && !isClickInside) {
@@ -47,6 +38,44 @@ export default function Navbar() {
         document.addEventListener('click', handleCloseMenu)
         return () => document.removeEventListener('click', handleCloseMenu)
     }, [])
+
+    const [options, setOptions] = useState([]);
+
+    let user = JSON.parse(localStorage.getItem("user"));
+    useEffect(
+        () => {
+            if (user) {
+                if (user.role === 0) {
+                    setOptions([
+                        { to: '/', title: "Home" },
+                        { to: '/shop', title: "Shop" },
+                        { to: '/', title: "Sign Out", onClick: signout },
+                    ]);
+                } else if (user.role === 1) {
+                    setOptions([
+                        { to: '/', title: "Home" },
+                        { to: '/shop', title: "Shop" },
+                        { to: '/', title: "Sign Out", onClick: signout },
+                    ]);
+                } else if (user.role === 2) {
+                    setOptions([
+                        { to: '/', title: "Home" },
+                        { to: '/shop', title: "Shop" },
+                        { to: '/panel', title: "Panel Admin" },
+                        { to: '/', title: "Sign Out", onClick: signout },
+                    ]);
+                }
+            }
+            else {
+                setOptions([
+                    { to: '/', title: "Home" },
+                    { to: '/signin', title: "Login" },
+                    { to: '/signup', title: "Register" },
+                    { to: '/shop', title: "Shop" },
+                    { to: '/', title: "Sign Out", onClick: signout },
+                ]);
+            }
+        }, [])
 
     return (
         <>
