@@ -11,6 +11,7 @@ import AdminCategories from './pages/AdminCategories'
 import AdminUsers from './pages/AdminUsers'
 import Cart from './pages/Cart'
 import Details from './pages/Details'
+import beSalesman from './pages/beSalesman'
 
 const router = createBrowserRouter([
     {
@@ -23,8 +24,10 @@ const router = createBrowserRouter([
             { path: '/details', element: <Details />},
 
         ]
-    }, { path: '/signin', element: <Signin /> },
+    }, 
+    { path: '/signin', element: <Signin /> },
     { path: '/signup', element: <Signup /> },
+    { path: '/seller-form', element: <beSalesman /> },
     {
         path: '/',
         element: <Admin />,
