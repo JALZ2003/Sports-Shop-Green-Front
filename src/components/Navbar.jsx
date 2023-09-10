@@ -72,7 +72,6 @@ export default function Navbar() {
                     { to: '/signin', title: "Login" },
                     { to: '/signup', title: "Register" },
                     { to: '/shop', title: "Shop" },
-                    { to: '/', title: "Sign Out", onClick: signout },
                 ]);
             }
         }, [])
