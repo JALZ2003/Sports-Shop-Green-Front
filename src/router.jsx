@@ -8,9 +8,10 @@ import Shop from './pages/Shop'
 import Panel from './pages/Panel'
 import AdminProducts from './pages/AdminProducts'
 import AdminCategories from './pages/AdminCategories'
-import AdminUsers from './pages/AdminUsers'
+import AdminCreators from './pages/AdminCreators'
 import Cart from './pages/Cart'
 import Details from './pages/Details'
+import BeSeller from './pages/BeSeller'
 
 const router = createBrowserRouter([
     {
@@ -23,14 +24,16 @@ const router = createBrowserRouter([
             { path: '/details', element: <Details />},
 
         ]
-    }, { path: '/signin', element: <Signin /> },
+    }, 
+    { path: '/signin', element: <Signin /> },
     { path: '/signup', element: <Signup /> },
+    { path: '/seller-form', element: <BeSeller /> },
     {
         path: '/',
         element: <Admin />,
         children: [
             { path: '/panel', element: <Panel /> },
-            { path: '/adminusers', element: <AdminUsers /> },
+            { path: '/admincreators', element: <AdminCreators /> },
             { path: '/adminproducts/:page', element: <AdminProducts /> },
             { path: '/admincategories', element: <AdminCategories /> },
         ]

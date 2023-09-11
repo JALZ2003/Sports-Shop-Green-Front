@@ -5,7 +5,7 @@ import axios from "axios";
 import apiUrl from '../apiUrl';
 import ModalNewProduct from '../components/ModalNewProduct'
 import productsActions from '../store/actions/products';
-const { save_name } = productsActions;
+const { save_name, destroyProduct } = productsActions;
 
 export default function AdminProducts() {
 
@@ -17,6 +17,8 @@ export default function AdminProducts() {
   const [show, setShow] = useState(false)
   const [add, setAdd] = useState(false)
   const [products, setProducts] = useState([]);
+  const [editP, seteditP] = useState({});
+  const [reload, setReload] = useState(false)
   const [next, setNext] = useState(null);
   const [prev, setPrev] = useState(null);
   const { page } = useParams();
@@ -25,9 +27,14 @@ export default function AdminProducts() {
     navigate(`/adminproducts/${numberPage}`);
   }
 
-  useEffect(() => {
-    axios.get(apiUrl + "categories").then(res => setCategories(res.data.response)).catch(error => { console.log(error) });
-  }, [])
+  const deleteProduct = (each) => {
+    setReload(!reload)
+    dispatch(destroyProduct({ product_id: each._id }))
+  }
+
+  const editOpen = (each) => {
+    seteditP(each)
+  }
 
   useEffect(() => {
     axios.get(apiUrl + `products/admi?name=${productsStore.name}&page=1`)
@@ -43,7 +50,7 @@ export default function AdminProducts() {
         setNext(null);
         setPrev(null);
       });
-  }, [productsStore.name])
+  }, [productsStore.name, reload])
 
   useEffect(() => {
     axios.get(apiUrl + `products/admi?name=${productsStore.name}&page=${page}`)
@@ -58,7 +65,7 @@ export default function AdminProducts() {
         setNext(null);
         setPrev(null);
       });
-  }, [page])
+  }, [page, reload])
 
   return (
     <div className='flex w-full h-screen'>
@@ -71,8 +78,8 @@ export default function AdminProducts() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
           </div>
-          <input onChange={(e) => dispatch(save_name({ name: e.target.value }))} defaultValue={productsStore.text}
-            className='border-2 font-normal text-[20px] leading-[22.84px] p-[10px] text-center lg:text-start w-full rounded-r-lg hover:border-blue lg:outline-0'
+          <input onChange={(e) => dispatch(save_name({ name: e.target.value }))} defaultValue={productsStore.name}
+            className='border-2 text-black font-normal text-[20px] leading-[22.84px] p-[10px] text-center lg:text-start w-full rounded-r-lg hover:border-blue lg:outline-0'
             type="text"
             placeholder='Search product' />
         </div>
@@ -99,7 +106,7 @@ export default function AdminProducts() {
                   Stock
                 </th>
                 <th className="border-b-2 border-blue w-[5%] lg:w-[5%]">
-                  Sex
+                  Gender
                 </th>
                 <th className="border-b-2 border-blue w-[5%] lg:w-[7%]">
                 </th>
@@ -125,10 +132,10 @@ export default function AdminProducts() {
                     </th>
                     <th className="border border-slate-400 lg:w-[7%] font-normal">
                       <div className='flex justify-center'>
-                        <svg onClick={() => setShow(!show)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 mr-2 cursor-pointer transition hover:scale-105">
+                        <svg onClick={() => { setShow(!show), editOpen(each) }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 mr-2 cursor-pointer transition hover:scale-105">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                         </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 cursor-pointer transition hover:scale-105">
+                        <svg onClick={() => { deleteProduct(each) }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 cursor-pointer transition hover:scale-105">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                         </svg>
                       </div>
@@ -160,7 +167,7 @@ export default function AdminProducts() {
             </button>}
         </div>
       </div>
-      {show && <ModalNewProduct show={show} setShow={setShow} setAdd={setAdd} add={add} />}
+      {show && <ModalNewProduct show={show} setShow={setShow} setAdd={setAdd} add={add} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP}/>}
     </div>
   )
 }
