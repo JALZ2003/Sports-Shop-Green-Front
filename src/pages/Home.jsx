@@ -4,18 +4,18 @@ import Equipements from "/Images/Equipements.png"
 import Tennis from "/Images/Tennis.png"
 import Carrousel from "../components/Carrousel"
 import CardCategories from "../components/CardCategories"
-import { useSelector, useDispatch } from "react-redux"
-import { useState, useEffect } from "react"
-import categories_actions from "../store/actions/categories"
-const {read_categories} = categories_actions
+// import { useSelector, useDispatch } from "react-redux"
+// import { useState, useEffect } from "react"
+// import categories_actions from "../store/actions/categories"
+// const {read_categories} = categories_actions
 export default function Home() {
-    const categories = useSelector(store => store.categories.categories.response)
-    const dispatch = useDispatch()
-    // console.log(categories)
+    // const categories = useSelector(store => store.categories.categories.response)
+    // const dispatch = useDispatch()
+    // // console.log(categories)
 
-    useEffect(() =>{
-        dispatch(read_categories())
-    }, [])
+    // useEffect(() =>{
+    //     dispatch(read_categories())
+    // }, [])
 
     return (
         <>

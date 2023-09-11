@@ -2,7 +2,7 @@ import SportWear from "/Images/SportWear.png"
 import Accesories from "/Images/Accesories.png"
 import Equipements from "/Images/Equipements.png"
 import Tennis from "/Images/Tennis.png"
-import Carrousel from "../components/Carrousel"
+import  { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import categories_actions from "../store/actions/categories"
@@ -31,40 +31,35 @@ export default function CardCategories() {
 
 return(
     <>
+
+{/* color solido */}
+
+
+  <div  className="flex justify-around py-10 px-4 md:px-2 flex-wrap gap-8 bg-gray-200 -mt-6">
+        {categories.map((each)=>(            
+                <div key={uuidv4()}className="flex-col w-[300px] lg:w-[17%] h-[150px] md:[200px] lg:[300px] object-contain rounded-2xl overflow-hidden  shadow-lg">
+                <div className=" flex items-center justify-center  h-full w-full bg-cover bg-center rounded-2xl" style={{ backgroundColor: each.color }} >
+                    <span  className=" flex justify-center  items-center text-center  w-[80%] lg:w-[80%] h-16 rounded-md  text-2xl md:text-xl  lg:text-2xl font-bold text-gray-800  bg-gray-100  bg-opacity-60 drop-shadow-2xl" >{each.name}</span>
+                </div>
+            </div>
+            )         
+    )}
+ </div> 
+
+ {/* con imagen de fondo */}
     
     <div  className="flex justify-around py-10 px-4 md:px-2 flex-wrap gap-8 bg-gray-200 -mt-6">
         {categories.map((each)=>{
-    return(
-
-        <div key={each}className="flex-col w-[300px] lg:w-[17%] h-[300px] md:[200px] lg:[300px] object-contain rounded-2xl overflow-hidden  shadow-lg">
+            return(
+        <div key={uuidv4()}className="flex-col w-[300px] lg:w-[17%] h-[300px] md:[200px] lg:[300px] object-contain rounded-2xl overflow-hidden  shadow-lg">
         <div className=" flex items-center justify-center  h-full w-full bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(${SportWear})` }} >
             <span  className=" flex justify-center  items-center text-center  w-[80%] lg:w-[80%] h-16 rounded-md  text-2xl md:text-xl  lg:text-2xl font-bold text-gray-800  bg-gray-100  bg-opacity-60 drop-shadow-2xl" style={{ backgroundColor: each.color }}>{each.name}</span>
         </div>
     </div>  
-   
-    )
-    }
-)}
- </div>
-
-{/* con color solido */}
-
-
- {/* <div  className="flex justify-around py-10 px-4 md:px-2 flex-wrap gap-8 bg-gray-200 -mt-6">
-        {categories.map((each)=>{
-    return(
-
-        <div key={each}className="flex-col w-[300px] lg:w-[17%] h-[300px] md:[200px] lg:[300px] object-contain rounded-2xl overflow-hidden  shadow-lg">
-        <div className=" flex items-center justify-center  h-full w-full bg-cover bg-center rounded-2xl" style={{ backgroundColor: each.color }} >
-            <span  className=" flex justify-center  items-center text-center  w-[80%] lg:w-[80%] h-16 rounded-md  text-2xl md:text-xl  lg:text-2xl font-bold text-gray-800  bg-gray-100  bg-opacity-60 drop-shadow-2xl" >{each.name}</span>
-        </div>
-    </div>  
-   
-    )
-    }
-)}
- </div> */}
-
+       )}
+    )}
+ </div> 
+ 
  </>
 )
 }
