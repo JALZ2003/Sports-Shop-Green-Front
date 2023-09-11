@@ -109,7 +109,7 @@ export default function NewProduct({setShow, show, setReload, reload}) {
           <div className='flex w-full justify-center'>
             <div className='flex flex-col w-[90%]'>
               <label className='text-sm font-medium pl-1 pb-1'>Description</label>
-              <textarea ref={description} type="text" className='resize-none rounded-lg mb-5 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-[100px]' />
+              <textarea ref={description} type="text" className='resize-none rounded-lg  font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-[100px]' />
             </div>
           </div>
         </div>

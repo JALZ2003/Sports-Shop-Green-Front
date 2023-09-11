@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import productsActions from "../actions/products";
 
-const { save_name, save_checks, destroyProduct } = productsActions
+const { save_name, save_checks, destroyProduct, updateProduct } = productsActions
 
 const initialState = {
     name: "",
@@ -25,7 +25,21 @@ const productsReducer = createReducer(
                 products: state.products.filter(each =>
                     each._id !== action.payload.id_to_delete
                 )
-
+            }
+            return newState
+        }
+    ).addCase(
+        updateProduct.fulfilled,
+        (state,action) => {
+            let newState = {
+                ...state,
+                products : state.products.map(each => {
+                    if(each._id===action.payload._id) {
+                        return action.payload
+                    } else {
+                        return each
+                    }    
+                })
             }
             return newState
         }

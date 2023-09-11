@@ -12,7 +12,7 @@ export default function BeSeller() {
 		let data = {
 			name: name.current.value,
 			lastname: lastname.current.value,
-			country: country.current.value,
+			company: company.current.value,
 			country: country.current.value,
 			city: city.current.value
 		}

@@ -25,10 +25,32 @@ const destroyProduct = createAsyncThunk(
     }
 )
 
+const updateProduct = createAsyncThunk(
+    "updateProduct",
+    async (obj) => {
+        try {
+            let one = await axios.put(apiUrl + "products/" + obj.product_id,
+             {
+                name : obj.name,
+                category_id: obj.category_id,
+                price: obj.price,
+                stock: obj.stock,
+                sex: obj.sex,
+                url_photo: obj.url_photo,
+                description: obj.description,
+            }, headers())
+            return one.data.response
+        } catch (error) {
+            return null
+        }
+    }
+)
+
 const productsActions = {
     save_name,
     save_checks,
-    destroyProduct
+    destroyProduct,
+    updateProduct
 }
 
 export default productsActions
