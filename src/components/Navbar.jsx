@@ -24,6 +24,15 @@ export default function Navbar() {
         }
     }
 
+    const options = [
+        { to: '/', title: "Home" },
+        { to: '/signin', title: "Login" },
+        { to: '/signup', title: "Register" },
+        { to: '/products', title: "Shop" },
+        { to: '/panel', title: "Panel Admin" },
+        { to: '/', title: "Sign Out", onClick: signout },
+    ]
+
     const handleCloseMenu = (event) => {
         const isClickInside = menuIcon.current.contains(event.target)
         if (menuIcon.current !== event.target && !isClickInside) {
