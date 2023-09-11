@@ -19,8 +19,11 @@ const read_categories = createAsyncThunk(
     "read_categories",
     async () => {
         try {
-            let categories = await axios.get(apiUrl + "categories", header())
-            console.log(categories)
+            let all =  await axios.get(apiUrl + "categories", header())
+            let categories = all.data
+            return {
+                categories
+            }
         } catch (error) {
             return {
                 categories: []
@@ -29,8 +32,21 @@ const read_categories = createAsyncThunk(
     }
 )
 
+const update_category = createAsyncThunk(
+    "update_category",
+    async ({obj })=> {
+        try{
+let one = await axios.put(apiUrl + "categories", + obj._id, {name:obj.name, color:obj.color}, header())
+return one.data.response
+        }catch(error){
+            return null
+        }
+    }
+)
+
 const categories_actions = {
     create_category,
-    read_categories
+    read_categories,
+    update_category
 }
 export default categories_actions
