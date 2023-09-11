@@ -63,7 +63,6 @@ function Shop() {
                             <Card key={product._id} product={product} />
                         ))}
                     </div>
-
                     <Pagination
                         setCurrentPage={setCurrentPage}
                         currentPage={currentPage}
