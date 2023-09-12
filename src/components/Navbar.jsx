@@ -7,10 +7,11 @@ import axios from "axios";
 
 export default function Navbar() {
 
-    const [show, setShow] = useState(false)
-    const [login, setLogin] = useState(false)
-    const menuIcon = useRef(null)
-    const userIcon = useRef(null)
+    const [show, setShow] = useState(false);
+    const [login, setLogin] = useState(false);
+    const [options, setOptions] = useState([]);
+    const menuIcon = useRef(null);
+    const userIcon = useRef(null);
 
     const signout = async () => {
 
@@ -23,15 +24,6 @@ export default function Navbar() {
             console.log(error);
         }
     }
-
-    const options = [
-        { to: '/', title: "Home" },
-        { to: '/signin', title: "Login" },
-        { to: '/signup', title: "Register" },
-        { to: '/products', title: "Shop" },
-        { to: '/panel', title: "Panel Admin" },
-        { to: '/', title: "Sign Out", onClick: signout },
-    ]
 
     const handleCloseMenu = (event) => {
         const isClickInside = menuIcon.current.contains(event.target)
@@ -49,8 +41,6 @@ export default function Navbar() {
         return () => document.removeEventListener('click', handleCloseMenu)
     }, [])
 
-    const [options, setOptions] = useState([]);
-
     let user = JSON.parse(localStorage.getItem("user"));
     useEffect(
         () => {
@@ -58,20 +48,20 @@ export default function Navbar() {
                 if (user.role === 0) {
                     setOptions([
                         { to: '/', title: "Home" },
-                        { to: '/shop', title: "Shop" },
+                        { to: '/products', title: "Shop" },
                         { to: '/seller-form', title: "Sell with us" },
                         { to: '/', title: "Sign Out", onClick: signout },
                     ]);
                 } else if (user.role === 1) {
                     setOptions([
                         { to: '/', title: "Home" },
-                        { to: '/shop', title: "Shop" },
+                        { to: '/products', title: "Shop" },
                         { to: '/', title: "Sign Out", onClick: signout },
                     ]);
                 } else if (user.role === 2) {
                     setOptions([
                         { to: '/', title: "Home" },
-                        { to: '/shop', title: "Shop" },
+                        { to: '/products', title: "Shop" },
                         { to: '/panel', title: "Panel Admin" },
                         { to: '/', title: "Sign Out", onClick: signout },
                     ]);
@@ -82,7 +72,7 @@ export default function Navbar() {
                     { to: '/', title: "Home" },
                     { to: '/signin', title: "Login" },
                     { to: '/signup', title: "Register" },
-                    { to: '/shop', title: "Shop" },
+                    { to: '/products', title: "Shop" },
                 ]);
             }
         }, [])

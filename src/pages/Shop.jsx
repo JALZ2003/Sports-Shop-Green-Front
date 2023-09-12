@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
 import Pagination from "../components/Pagination";
-import apiUrl from "../../apiUrl";
+import apiUrl from "../apiUrl";
+import axios from "axios";
 
 function Shop() {
-    const navigate = useNavigate();
 
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -19,35 +18,18 @@ function Shop() {
     const [priceFilter, setPriceFilter] = useState({});
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(apiUrl + `/products?page=${currentPage}`);
-                const data = await response.json();
-                setProducts(data.response);
-                setTotalPages(data.pages);
-                setHasPrevPage(data.prev !== null);
-                setHasNextPage(data.next !== null);
-            } catch (error) {
-                console.error('Error getting data:', error);
-            }
-        }
-
-        fetchData();
+        axios(`${apiUrl}products?page=${currentPage}`).then(res => {
+            setProducts(res.data.response);
+            setTotalPages(res.data.pages);
+            setHasPrevPage(res.data.prev !== null);
+            setHasNextPage(res.data.next !== null);
+        })
     }, [currentPage]);
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await fetch(apiUrl + '/categories');
-                const data = await response.json();
-
-                setCategories(data.response);
-            } catch (error) {
-                console.error('Error al obtener categorías:', error);
-            }
-        };
-
-        fetchCategories();
+        axios(`${apiUrl}categories`).then(res => {
+            setCategories(res.data.response);
+        })
     }, []);
 
     const handleCategoryChange = (categoryId, isChecked) => {
