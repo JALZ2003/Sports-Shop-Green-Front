@@ -1,6 +1,8 @@
 import { RiShoppingCart2Line } from "react-icons/ri";
+import { Link as Anchor } from 'react-router-dom';
 
 const Card = ({ product }) => {
+
     return (
         <div className="bg-blue-200 p-1 md:p-2 lg:p-3 rounded-lg shadow-md border-2 border-gray-800/10">
             <img
@@ -15,9 +17,9 @@ const Card = ({ product }) => {
                 </div>
                 <div className="flex items-center justify-between mt-4">
                     <h5 className="text-2xl md:text-3xl lg:text-4xl text-orange">${product.price}</h5>
-                    <button className="bg-orange text-black font-bold rounded-full p-2 md:p-3 lg:p-4 hover:bg-orange-600 hover:-translate-y-1 transition-all duration-200 shadow-black shadow-md ">
-                        <RiShoppingCart2Line />
-                    </button>
+                    <Anchor to={`/details/${product._id}`} className="bg-orange text-black font-bold rounded-full p-2 md:p-3 lg:p-4 hover:bg-orange-600 hover:-translate-y-1 transition-all duration-200 shadow-black shadow-md ">
+                        Show Details
+                    </Anchor>
                 </div>
             </div>
         </div>
