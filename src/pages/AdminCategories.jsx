@@ -20,7 +20,8 @@ export default function AdminCategories() {
   const [categories, setCategories] = useState([]);
   const [newcategory, setNewCategory] = useState(false)
   const [editCategory, setEditCategory] = useState({});
-
+ /*  const [add, setAdd]= useState(false)
+ */
   const deleteCategory = (each) => {
     setReload(!reload)
     dispatch(destroy_category({ category_id: each._id }))
@@ -115,7 +116,9 @@ export default function AdminCategories() {
             </table>
           </div>
         </div>
-        {show && <ModalNewCategory show={show} setShow={setShow} newcategory={newcategory} setNewCategory={setNewCategory} reload={reload} setReload={setReload} editCategory={editCategory} setEditCategory={setEditCategory} />}
+        {show && <ModalNewCategory show={show} setShow={setShow} newCategory={newcategory} 
+        setNewCategory={setNewCategory} reload={reload} setReload={setReload} 
+        editCategory={editCategory} setEditCategory={setEditCategory}  />}
 
 
       </div>

@@ -9,27 +9,24 @@ export default function NewCategory({setShow, show, setReload, reload}) {
 
   const navigate = useNavigate();
 
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    axios.get(apiUrl + "categories").then(res => setCategories(res.data.response)).catch(error => console.log(error));
-  }, [])
+  const name = useRef();
+  const color = useRef();
 
   const create = () => {
 
     setReload(!reload)
 
     let data = {
-      name: name.current.value,
-      color: category.current.value,
-      
+      name: name.current.value.trim(),
+      color: color.current.value.trim(),
     }
 
     axios
-			.post(apiUrl + "products", data, header())
+			.post(apiUrl + "categories", data, header())
 			.then(() =>
 				Swal.fire({
 					icon: "success",
-					title: "Product created",
+					title: "Category created",
 					confirmButtonColor: "#F97316"
 				}))
 			.then(() => {navigate("/adminproducts/1"), setShow(!show)})
@@ -44,14 +41,13 @@ export default function NewCategory({setShow, show, setReload, reload}) {
 			);
   }
 
-  const name = useRef();
-  const color = useRef();
+
   
 
   return (
     <div className="flex flex-col items-center justify-center w-full  min-h-full py-8 bg-[#EDF2F4] text-black">
       <form className='flex flex-col items-center justify-center w-full' >
-        <h1 className='font-bold text-[30px] py-3'>NEW PRODUCT</h1>
+        <h1 className='font-bold text-[30px] py-3'>NEW CATEGORY</h1>
 
         <div className='flex flex-col py-5 w-full items-center'>
           <div className='flex w-full justify-center'>
@@ -59,56 +55,19 @@ export default function NewCategory({setShow, show, setReload, reload}) {
               <label className='font-medium text-sm pl-1 pb-1'>Name</label>
               <input ref={name} type="text" className='rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
             </div>
+          </div>
 
-            <div className='flex flex-col w-[45%]'>
+          <div className='flex w-full justify-center'>
+            <div className='flex flex-col w-[45%] pr-5'>
               <label className='font-medium text-sm pl-1 pb-1'>Color</label>
-              <select ref={color} defaultValue="" className="rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10" name="categories" id="selectCat">
-               
-                {categories?.map((item, index) => (<option key={index} className="text-black" value={item._id}>{item.name}</option>))}
-              </select>
-            </div>
-          </div>
-
-          <div className='flex w-full justify-center'>
-            <div className='flex flex-col w-[45%] pr-5'>
-              <label className='font-medium text-sm pl-1 pb-1'>Price</label>
-              <input min="0" ref={price} type="number" className='rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
-            </div>
-
-            <div className='flex flex-col w-[45%]'>
-              <label className='font-medium text-sm pl-1 pb-1'>Stock</label>
-              <input min="0" ref={stock} type="number" className='rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
-            </div>
-          </div>
-
-          <div className='flex w-full justify-center'>
-            <div className='flex flex-col w-[45%] pr-5'>
-              <label className='font-medium text-sm pl-1 pb-1'>Gender</label>
-              <select ref={sex} defaultValue="" className="rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10" name="categories" id="selectCat">
-                <option disabled value=""></option>
-                <option className="text-black" value="U">U</option>
-                <option className="text-black" value="H">H</option>
-                <option className="text-black" value="M">M</option>
-              </select>
-            </div>
-
-            <div className='flex flex-col w-[45%]'>
-              <label className='font-medium text-sm pl-1 pb-1'>Photo</label>
-              <input ref={photo} type="url" className='rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
-            </div>
-          </div>
-
-          <div className='flex w-full justify-center'>
-            <div className='flex flex-col w-[90%]'>
-              <label className='text-sm font-medium pl-1 pb-1'>Description</label>
-              <textarea ref={description} type="text" className='resize-none rounded-lg  font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-[100px]' />
+              <input  ref={color} type="text" className='rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
             </div>
           </div>
         </div>
       </form>
 
       <div className='flex flex-col items-center'>
-        <button onClick={create} className='bg-[#EC6B2F] rounded-lg py-2 px-5 flex justify-center text-center text-white transition hover:scale-105 hover:border'>CREATE</button>
+        <button onClick={() => create()} className='bg-[#EC6B2F] rounded-lg py-2 px-5 flex justify-center text-center text-white transition hover:scale-105 hover:border'>CREATE</button>
       </div>
     </div>
   )
