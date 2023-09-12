@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Card from "../components/Card";
-import SearchBar from "../components/SearchBar";
-import Pagination from "../components/Pagination";
+import Pagination from "../components/Pagination"
 import apiUrl from "../apiUrl";
 import axios from "axios";
 
 function Shop() {
-
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -16,20 +14,26 @@ function Shop() {
     const [hasNextPage, setHasNextPage] = useState(false);
     const [filteredCategories, setFilteredCategories] = useState({});
     const [priceFilter, setPriceFilter] = useState({});
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        axios(`${apiUrl}products?page=${currentPage}`).then(res => {
-            setProducts(res.data.response);
-            setTotalPages(res.data.pages);
-            setHasPrevPage(res.data.prev !== null);
-            setHasNextPage(res.data.next !== null);
-        })
+        const fetchData = async () => {
+            const response = await axios(`${apiUrl}products?page=${currentPage}`);
+            const { response: products, prev, next, pages } = response.data;
+
+            setProducts(products);
+            setTotalPages(pages);
+            setHasPrevPage(prev !== null);
+            setHasNextPage(next !== null);
+        };
+
+        fetchData();
     }, [currentPage]);
 
     useEffect(() => {
         axios(`${apiUrl}categories`).then(res => {
             setCategories(res.data.response);
-        })
+        });
     }, []);
 
     const handleCategoryChange = (categoryId, isChecked) => {
@@ -43,16 +47,24 @@ function Shop() {
         setPriceFilter(priceFilter);
     }
 
+    const handleSearchChange = (term) => {
+        setSearchTerm(term);
+    };
+
     const goToPrevPage = () => {
-        if (hasPrevPage) {
+        if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     }
 
     const goToNextPage = () => {
-        if (hasNextPage) {
+        if (currentPage < totalPages) {
             setCurrentPage(currentPage + 1);
         }
+    }
+
+    const goToPage = (page) => {
+        setCurrentPage(page);
     }
 
     return (
@@ -63,25 +75,34 @@ function Shop() {
                     filteredCategories={filteredCategories}
                     onCategoryChange={handleCategoryChange}
                     onPriceFilterApply={handlePriceFilterApply}
+                    onSearch={handleSearchChange}
                 />
-                <div className="flex-1 h-full flex flex-col justify-center">
-                    <SearchBar />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-                        {products
-                            .filter(product => {
-                                const productCategoryId = product.category_id._id;
-                                const isCategorySelected = filteredCategories[productCategoryId] || Object.values(filteredCategories).every(value => !value);
-                                const isPriceInRange = (
-                                    (!priceFilter.minPrice || product.price >= priceFilter.minPrice) &&
-                                    (!priceFilter.maxPrice || product.price <= priceFilter.maxPrice)
-                                );
-                                return isCategorySelected && isPriceInRange;
-                            })
-                            .map(product => (
+                <div className="flex-1 flex flex-col justify-center items-center">
+                    {products
+                        .filter(product => {
+                            const productCategoryId = product.category_id._id;
+                            const isCategorySelected = filteredCategories[productCategoryId] || Object.values(filteredCategories).every(value => !value);
+                            const isPriceInRange = (
+                                (!priceFilter.minPrice || product.price >= priceFilter.minPrice) &&
+                                (!priceFilter.maxPrice || product.price <= priceFilter.maxPrice)
+                            );
+                            const isTextMatch = (
+                                !searchTerm ||
+                                product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                product.description.toLowerCase().includes(searchTerm.toLowerCase())
+                            );
+                            return isCategorySelected && isPriceInRange && isTextMatch;
+                        })
+                        .length > 0 ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+                            {products.map(product => (
                                 <Card key={product._id} product={product} />
-                            ))
-                        }
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center">There are no products that match the selected filters.</div>
+                    )
+                    }
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
@@ -89,8 +110,12 @@ function Shop() {
                         goToNextPage={goToNextPage}
                         hasPrevPage={hasPrevPage}
                         hasNextPage={hasNextPage}
+                        goToPage={goToPage}
                     />
                 </div>
+
+
+
             </main>
         </div>
     );
