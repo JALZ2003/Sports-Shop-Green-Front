@@ -112,9 +112,10 @@ function Shop() {
                                     product.description.toLowerCase().includes(searchTerm.toLowerCase())
                                 );
                                 return isCategorySelected && isPriceInRange && isTextMatch;
-                            }) && <div className="col-span-full text-center">Results not found!</div>}
+                            }) && <div className="col-span-full row-span-full h-screen flex items-center justify-center"><span className="text-3xl p-6 text-orange rounded-full font-medium">Results not found!</span></div>}
                         </div>
                     </div>
+
 
                     <Pagination
                         currentPage={currentPage}
@@ -125,6 +126,7 @@ function Shop() {
                         hasNextPage={hasNextPage}
                         goToPage={goToPage}
                     />
+
                 </div>
             </main>
         </div>

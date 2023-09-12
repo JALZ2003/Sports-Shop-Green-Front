@@ -29,7 +29,6 @@ const Pagination = ({ currentPage, totalPages, goToPage, goToPrevPage, goToNextP
                         disabled={currentPage === 1}
                     >
                         <HiChevronDoubleLeft />
-
                     </a>
                 </li>
                 {visiblePages.map((page) => (
