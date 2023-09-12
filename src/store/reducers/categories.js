@@ -1,7 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit"
 import categories_actions from "../actions/categories"
 
-const { create_category, read_categories, update_category } = categories_actions
+
+const { create_category, read_categories, update_category, destroy_category } = categories_actions
 
 const initial_state = {
     categories: []
@@ -39,6 +40,15 @@ const categoriesReducer = createReducer(
                         return { ...each };
                     }
                 })
+            }
+            return new_state
+        }
+    ).addCase(
+        destroy_category.fulfilled,
+        (state, action) =>{
+            let new_state= {
+                ...state ,
+                category: state.categories.filter(each=> each._id !== action.payload.delete)
             }
             return new_state
         }
