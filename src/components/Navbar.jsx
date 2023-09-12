@@ -126,7 +126,7 @@ export default function Navbar() {
                     {options?.map((each, index) =>
                         <li className="py-2 w-full bg-gray-200" key={index}>
                             <Anchor onClick={each.onClick} key={index} to={each.to}>
-                                <div className='text-black font-poppins text-center text-[18px] font-semibold leading-6 rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 hover:scale-110 transition p-2 w-[200px]'>
+                                <div className='text-black font-poppins text-left text-[18px] font-semibold leading-6 rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 hover:scale-110 transition p-2 w-[200px]'>
                                     {each.title}
                                 </div>
                             </Anchor>
