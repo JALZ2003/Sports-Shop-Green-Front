@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { RiMoneyDollarCircleLine, RiFilter3Line, RiCloseLine } from "react-icons/ri";
+import { RiCloseLine, RiFilter3Line, RiMoneyDollarCircleLine } from "react-icons/ri";
+import SearchBar from "./SearchBar";
 
-const Sidebar = ({ categories, filteredCategories, onCategoryChange, onPriceFilterApply }) => {
+const Sidebar = ({ categories, filteredCategories, onCategoryChange, onPriceFilterApply, onSearch }) => {
     const [showSidebar, setShowSidebar] = useState(false);
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
@@ -26,12 +27,17 @@ const Sidebar = ({ categories, filteredCategories, onCategoryChange, onPriceFilt
         onPriceFilterApply(priceFilter);
     }
 
+    const handleSearch = (term) => {
+        onSearch(term);
+    };
+
     return (
         <>
             <div className={`w-[80%] sm:w-[40%] lg:max-w-[300px] z-20 fixed top-0  lg:static ${showSidebar ? "left-0 " : "-left-full "
                 } h-full lg:h-auto text-white transition-all bg-blue p-4 lg:p-4 lg:shadow-none ${showSidebar ? "lg:rounded-lg" : "rounded-lg"
                 }`}
             >
+                <SearchBar action={handleSearch} />
                 <h4 className="my-4 text-white text-lg font-semibold">Categories</h4>
                 <div className="flex flex-col gap-2">
                     {categories.map(category => (
