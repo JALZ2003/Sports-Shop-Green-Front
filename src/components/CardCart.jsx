@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function CardCart({ name, price, stock, image, quantity, action }) {
+export default function CardCart({ name, price, stock, image, quantity, action, update }) {
 
     const [options, setOptions] = useState([]);
 
@@ -24,8 +24,8 @@ export default function CardCart({ name, price, stock, image, quantity, action }
                 </div>
                 <p className="lg:text-[20px] lg:w-[50vw]"> {stock > 0 ? "In Stock" : "Not Stock"} </p>
                 <div>
-                    <select id="cantidad" className="px-2 py-1 border-[1px] rounded-md border-[#000000]">
-                        { options.map(each => <option key={each} value={each} selected={each==quantity}> {each} </option>) }
+                    <select onChange={update} id="cantidad" className="px-2 py-1 border-[1px] rounded-md border-[#000000]">
+                        {options.map(each => <option key={each} value={each} selected={each===quantity}> {each} </option>)}
                     </select>
                 </div>
                 {/* <input type="number" name="" id="" defaultValuevalue="1" className="md:w-16 md:h-10 w-9 h-6 rounded-sm text-center border-[1px] border-[#000000]" /> */}
