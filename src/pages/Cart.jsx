@@ -22,6 +22,11 @@ export default function Cart() {
         setReload(!reload);
     }
 
+    const updateCart = async (id, e) => {
+        await disptach(updateProductCart({ cart_id: id, quantity: e.target.value }));
+        setReload(!reload);
+    }
+
     useEffect(() => {
         axios(`${apiUrl}carts`, headers()).then(res => {
             setCart(res.data.response.cart);
@@ -31,8 +36,6 @@ export default function Cart() {
             setTotal(0);
         })
     }, [reload])
-
-    console.log(cart);
 
     return (
         <div className="flex flex-col w-full lg:w-[70%] mt-[148px] items-center justify-center mb-8 z-10 ">
@@ -58,6 +61,7 @@ export default function Cart() {
                         price={product?.product_id?.price}
                         quantity={product?.quantity}
                         action={() => deleteProduct(product._id)}
+                        update={(e) => updateCart(product._id, e)}
                     />)}
                 </div>
             </div>
