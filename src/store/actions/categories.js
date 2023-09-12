@@ -44,9 +44,24 @@ return one.data.response
     }
 )
 
+const destroy_category = createAsyncThunk(
+    "destroy_category",
+    async(obj) =>{
+        try{
+            let one = await axios.delete(apiUrl + "categories", obj._id, header())
+            return{
+                delete:one.data.response
+            }
+        }catch (error) {
+            return null
+        }
+    }
+)
+
 const categories_actions = {
     create_category,
     read_categories,
-    update_category
+    update_category,
+    destroy_category
 }
 export default categories_actions
