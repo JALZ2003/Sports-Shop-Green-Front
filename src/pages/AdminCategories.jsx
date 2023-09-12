@@ -117,6 +117,7 @@ export default function AdminCategories() {
         </div>
         {show && <ModalNewCategory show={show} setShow={setShow} newcategory={newcategory} setNewCategory={setNewCategory} reload={reload} setReload={setReload} editCategory={editCategory} setEditCategory={setEditCategory} />}
 
+
       </div>
 
       

@@ -25,16 +25,24 @@ export default function EditProduct({setReload, reload, editP, show, setShow}) {
     dispatch(updateProduct({
         product_id: each._id,
         name: name.current.value,
-        color: category.current.value,
-        
+        category_id: category.current.value,
+        price: price.current.value,
+        stock: stock.current.value,
+        sex: sex.current.value,
+        url_photo: photo.current.value,
+        description: description.current.value,
     }))
   }
 
   const [selectedCategory, setSelectedCategory] = useState(editP.category_id._id);
 
   const name = useRef();
-  const ccolor = useRef();
-  
+  const category = useRef();
+  const price = useRef();
+  const stock = useRef();
+  const sex = useRef();
+  const photo = useRef();
+  const description = useRef();
 
 
   return (
@@ -50,16 +58,42 @@ export default function EditProduct({setReload, reload, editP, show, setShow}) {
           </div>
 
           <div className='flex flex-col w-[45%]'>
-            <label className='font-medium text-sm pl-1 pb-1'>Color</label>
-            <select ref={color} value={selectedCategory}  onChange={(e) => setSelectedCategory(e.target.value)} className="rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10" name="categories" id="selectCat">
+            <label className='font-medium text-sm pl-1 pb-1'>Category</label>
+            <select ref={category} value={selectedCategory}  onChange={(e) => setSelectedCategory(e.target.value)} className="rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10" name="categories" id="selectCat">
               <option disabled value=""></option>
               {categories?.map((item, index) => (<option key={index} className="text-black" value={item._id} >{item.name}</option>))}
             </select>
           </div>
         </div>
 
-       
+        <div className='flex w-full justify-center'>
+          <div className='flex flex-col w-[45%] pr-5'>
+            <label className='font-medium text-sm pl-1 pb-1'>Price</label>
+            <input defaultValue={editP.price} min="0" ref={price} type="number" className='rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
+          </div>
 
+          <div className='flex flex-col w-[45%]'>
+            <label className='font-medium text-sm pl-1 pb-1'>Stock</label>
+            <input defaultValue={editP.stock} min="0" ref={stock} type="number" className='rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
+          </div>
+        </div>
+
+        <div className='flex w-full justify-center'>
+          <div className='flex flex-col w-[45%] pr-5'>
+            <label className='font-medium text-sm pl-1 pb-1'>Gender</label>
+            <select ref={sex} defaultValue={editP.sex} className="rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10" name="categories" id="selectCat">
+              <option disabled value=""></option>
+              <option className="text-black" value="U">U</option>
+              <option className="text-black" value="H">H</option>
+              <option className="text-black" value="M">M</option>
+            </select>
+          </div>
+
+          <div className='flex flex-col w-[45%]'>
+            <label className='font-medium text-sm pl-1 pb-1'>Photo</label>
+            <input defaultValue={editP.url_photo} ref={photo} type="url" className='rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10' />
+          </div>
+        </div>
 
         <div className='flex w-full justify-center'>
           <div className='flex flex-col w-[90%]'>

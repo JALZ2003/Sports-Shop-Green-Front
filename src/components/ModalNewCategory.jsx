@@ -1,6 +1,6 @@
 import React from 'react'
 import NewCategory from './NewCategory'
-import EditProduct from './EditProduct'
+import EditCategories from './EditCategories'
 
 export default function ModalNewCategory({ show, setShow, setAdd, add, setReload, reload, editP, seteditP }) {
     return (
@@ -14,9 +14,9 @@ export default function ModalNewCategory({ show, setShow, setAdd, add, setReload
                         </svg>
                     </div>
                     {add ? (
-                        <NewProduct setShow={setShow} show={show} reload={reload} setReload={setReload}/>
+                        <NewCategory setShow={setShow} show={show} reload={reload} setReload={setReload}/>
                     ):(
-                        <EditProduct setShow={setShow} show={show} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP}/>
+                        <EditCategories setShow={setShow} show={show} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP}/>
                     )}
 
                 </div>

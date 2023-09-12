@@ -5,7 +5,7 @@ import apiUrl from "../apiUrl.js"
 import Swal from "sweetalert2";
 import header from "../header.js"
 
-export default function NewProduct({setShow, show, setReload, reload}) {
+export default function NewCategory({setShow, show, setReload, reload}) {
 
   const navigate = useNavigate();
 

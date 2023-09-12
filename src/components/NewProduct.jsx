@@ -20,8 +20,12 @@ export default function NewProduct({setShow, show, setReload, reload}) {
 
     let data = {
       name: name.current.value,
-      color: category.current.value,
-      
+      category_id: category.current.value,
+      price: price.current.value,
+      stock: stock.current.value,
+      sex: sex.current.value,
+      url_photo: photo.current.value,
+      description: description.current.value,
     }
 
     axios
@@ -45,8 +49,12 @@ export default function NewProduct({setShow, show, setReload, reload}) {
   }
 
   const name = useRef();
-  const color = useRef();
-  
+  const category = useRef();
+  const price = useRef();
+  const stock = useRef();
+  const sex = useRef();
+  const photo = useRef();
+  const description = useRef();
 
   return (
     <div className="flex flex-col items-center justify-center w-full  min-h-full py-8 bg-[#EDF2F4] text-black">
@@ -61,9 +69,9 @@ export default function NewProduct({setShow, show, setReload, reload}) {
             </div>
 
             <div className='flex flex-col w-[45%]'>
-              <label className='font-medium text-sm pl-1 pb-1'>Color</label>
-              <select ref={color} defaultValue="" className="rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10" name="categories" id="selectCat">
-               
+              <label className='font-medium text-sm pl-1 pb-1'>Category</label>
+              <select ref={category} defaultValue="" className="rounded-lg mb-7 font-thin px-5 hover:border-2 focus:border-black-400 active:bg-black-600 h-10" name="categories" id="selectCat">
+                <option disabled value=""></option>
                 {categories?.map((item, index) => (<option key={index} className="text-black" value={item._id}>{item.name}</option>))}
               </select>
             </div>
