@@ -1,6 +1,35 @@
 import logo from "/Images/LogoCorto.png"
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from "react"
+import axios from "axios";
+import apiUrl from '../apiUrl';
 
 export default function Panel() {
+
+  const [totalP, setTotalP] = useState("")
+  const [totalC, setTotalC] = useState([])
+
+
+  useEffect(() => {
+    axios.get(apiUrl + `products/admi`)
+      .then(res => {
+        setTotalP(res.data.response.allProducts)
+      })
+      .catch(error => {
+        console.log(error)
+      });
+  }, [])
+
+  useEffect(() => {
+    axios.get(apiUrl + `creators`)
+      .then(res => {
+        setTotalC(res.data.response)
+      })
+      .catch(error => {
+        console.log(error)
+      });
+  }, [])
+
   return (
     <div className='flex w-full h-screen'>
       <div className='lg:w-[600px]'></div>
@@ -8,12 +37,12 @@ export default function Panel() {
         <h1 className='text-[40px] font-bold'>Panel</h1>
         <div className='py-5 xl:py-10 grid grid-cols-1 xl:grid-cols-3 w-full md:w-[65%] justify-items-center gap-7'>
           <div className='rounded-full w-[200px] h-[200px] bg-slate-200 p-2 flex flex-col justify-center items-center'>
-            <h1 className='font-bold text-[30px]'>Users</h1>
-            <p className='text-[24px]'>50</p>
+            <h1 className='font-bold text-[30px]'>Creators</h1>
+            <p className='text-[24px]'>{totalC.length}</p>
           </div>
           <div className='rounded-full w-[200px] h-[200px] bg-yellow-200 p-2 flex flex-col justify-center items-center'>
             <h1 className='font-bold text-[30px]'>Products</h1>
-            <p className='text-[24px]'>2500</p>
+            <p className='text-[24px]'>{totalP}</p>
           </div>
           <div className='rounded-full w-[200px] h-[200px] bg-green-200 p-2 flex flex-col justify-center items-center'>
             <h1 className='font-bold text-[30px]'>Categories</h1>

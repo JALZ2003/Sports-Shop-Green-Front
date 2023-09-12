@@ -2,16 +2,13 @@ import axios from "axios"
 import apiUrl from "../apiUrl"
 import header from "../header"
 import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import creatorsActions from "../store/actions/creators";
 const { destroyCreator, updateCreator } = creatorsActions
 
 export default function AdminCreators() {
 
   const dispatch = useDispatch();
-
-  const creatorsStore = useSelector(store => store.creators)
-  console.log(creatorsStore)
 
   const [creators, setCreators] = useState([])
   const [reload, setReload] = useState(false)
