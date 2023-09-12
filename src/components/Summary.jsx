@@ -1,13 +1,13 @@
 import { Link as Anchor } from "react-router-dom"
 import arrow from "/Images/arrowSummary.png"
 
-export default function Summary() {
+export default function Summary({ quantityProducts, total }) {
     return (
         <div className="w-full">
             <Anchor to={"/shop"} className="bg-blue text-white flex items-center min-w-full w-full justify-between h-9 p-3 hover:scale-105">PAY YOUR ORDER! <img src={arrow} className="w-10 h-3 ms-4" alt="" /></Anchor>
             <h1 className="font-bold mt-2">ORDER SUMMARY</h1>
             <div className="flex justify-between mt-2">
-                <p>2 products</p>
+                <p> {quantityProducts} products</p>
                 <p>$40</p>
             </div>
             <div className="flex justify-between mt-1">
@@ -17,7 +17,7 @@ export default function Summary() {
             <div className="border border-solid border-gray-400 mt-2" ></div>
             <div className="flex justify-between mt-2">
                 <p>Total</p>
-                <p>$40</p>
+                <p> $ {total} </p>
             </div>
             <p className="bg-gray-100 p-6 mt-4 text-justify">FREE SHIPPING FOR MEMBERS + EXPRESS DELIVERY
                 Until September 30, take advantage of express delivery for $14. Receive your order the next business day. Applies to orders with confirmed payment until 11:59 pm. <br />Orders with confirmed payment on Fridays after 11:59 pm, will be prepared the following Monday for delivery in 24 hours.
