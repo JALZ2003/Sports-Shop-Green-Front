@@ -63,9 +63,8 @@ export default function Cart() {
                         price={product?.product_id?.price}
                         quantity={product?.quantity}
                         action={() => deleteProduct(product._id)}
-                    />)):(<h1 className="flex items-center justify-center text-center font-bold" >{connected?.name} {connected?.lastname} Your cart is empty. If you wish to make a purchase, please browse our products in the shop. </h1>)}
                         update={(e) => updateCart(product._id, e)}
-                    />)}
+                    />)):(<h1 className="flex items-center justify-center text-center font-bold" >{connected?.name} {connected?.lastname} Your cart is empty. If you wish to make a purchase, please browse our products in the shop. </h1>)}
                 </div>
             </div>
         </div>
