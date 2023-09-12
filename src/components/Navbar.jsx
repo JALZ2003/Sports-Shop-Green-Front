@@ -77,15 +77,21 @@ export default function Navbar() {
             }
         }, [])
 
+        const connected = JSON.parse(localStorage.getItem('user'));
+        console.log(connected)
+
     return (
         <>
             <nav className="absolute w-full top-0">
                 <div className="bg-white">
                     <span className="flex justify-between items-center">
+                        <div className="flex items-center justify-center">
                         <svg onClick={() => setShow(!show)} ref={menuIcon} className="cursor-pointer hover:scale-110 transition w-10 h-10 ml-4 mt-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
-
+                        
+                        </div>
+                        
                         <div>
                             <Anchor to="/">
                                 <img className="mt-[20px] sm:ml-[50%] w-[193px] h-[52px]" src={Logo} alt='logo'></img>
@@ -95,7 +101,7 @@ export default function Navbar() {
                             {user ? (
                                 <ul className={`transition-all ease-in duration-500 w-full mt-3 mr-2 relative flex ${login ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
                                     <li className=" w-full bg-gray-200 rounded-lg px-2 hover:bg-gray-300 flex justify-center">
-                                        <Anchor to="/" onClick={signout} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>Sign Out</Anchor>
+                                        <Anchor to="/" onClick={signout} className='text-black transition hover:scale-110 text-center font-poppins text-[18px] font-semibold leading-6 rounded-lg cursor-pointer py-3'>{connected?.name} {connected?.lastname} | Sign Out</Anchor>
                                     </li>
                                 </ul>
                             ) : (

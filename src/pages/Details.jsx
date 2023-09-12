@@ -6,8 +6,11 @@ import apiUrl from "../apiUrl";
 import statesAction from '../store/actions/states';
 import header from "../header";
 const { allStates } = statesAction;
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { Link as Anchor } from "react-router-dom";
 
-export default function ProductDetails() {
+export default function ProductDetails({ product }) {
 
 	const dispatch = useDispatch();
 
@@ -30,6 +33,7 @@ export default function ProductDetails() {
 	// const [review, setReview] = useState("");
 	// const [reviews, setReviews] = useState([]);
 	const quantity = useRef();
+	const navigate = useNavigate();
 
 
 	useEffect(() => {
@@ -63,10 +67,23 @@ export default function ProductDetails() {
 		}
 		axios.post(`${apiUrl}carts`, data, header()).then(res => {
 			console.log(res);
+			Swal.fire({
+				icon:'success',
+				html:'The product has been added to the cart!'
+			})
 		}).catch(error => {
-			console.log("se fue")
+			Swal.fire({
+				icon:'error',
+				html:'You are not logged in. Please log in to enjoy our products!'
+			})
+            setTimeout(()=>navigate("/signin"),1000)
+			console.log(error)
 		})
 	};
+
+	const act = (id) => {
+        window.location.replace('/details/' + id)
+    }
 
 	return (
 		<div className="container mx-auto my-16 p-6">
@@ -83,7 +100,7 @@ export default function ProductDetails() {
 
 					<div className="mb-4 mt-6">
 						<div className="flex space-x-4">
-							Gneder: {gender}
+							Gender: {gender}
 						</div>
 					</div>
 
@@ -108,7 +125,7 @@ export default function ProductDetails() {
 							<img src={product?.url_photo} alt={product?.name} className="w-full h-[200px] rounded-lg" />
 							<h3 className="text-lg font-semibold mt-2"> {product?.name} </h3>
 							<p className="text-gray-600"> ${product?.price.toFixed(2)} </p>
-							<button className="w-full h-[40px] flex items-center justify-center bg-blue hover:bg-blue-600 text-white py-2 px-4 rounded-lg mt-2"> Ver Detalles </button>
+							<button onClick={() => act(product._id)} className="w-full h-[40px] flex items-center justify-center bg-blue hover:bg-blue-600 text-white py-2 px-4 rounded-lg mt-2"> Details </button>
 						</div>)}
 				</div>
 			</div>
