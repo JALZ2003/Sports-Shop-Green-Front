@@ -1,15 +1,21 @@
 import logo from "/Images/LogoCorto.png"
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from "react"
 import axios from "axios";
 import apiUrl from '../apiUrl';
+import categories_actions from '../store/actions/categories';
+const {read_categories} = categories_actions
+
 
 export default function Panel() {
 
   const [totalP, setTotalP] = useState("")
   const [totalC, setTotalC] = useState([])
+ const allCategories = useSelector(store => store.categories.categories.response)
+ const dispatch = useDispatch()
+ const [isLoading, setIsloading] = useState(true)
 
-
+console.log(allCategories)
   useEffect(() => {
     axios.get(apiUrl + `products/admi`)
       .then(res => {
@@ -29,6 +35,17 @@ export default function Panel() {
         console.log(error)
       });
   }, [])
+  useEffect(() =>{
+    dispatch(read_categories())
+    .then(()=>setIsloading(false))
+    .catch((error) =>{
+        console.log("Error fetching categories", error)
+        setIsloading(false)
+    })
+}, [dispatch])
+if (isLoading){
+    return <div>Loading...</div>}
+
 
   return (
     <div className='flex w-full h-screen'>
@@ -46,7 +63,7 @@ export default function Panel() {
           </div>
           <div className='rounded-full w-[200px] h-[200px] bg-green-200 p-2 flex flex-col justify-center items-center'>
             <h1 className='font-bold text-[30px]'>Categories</h1>
-            <p className='text-[24px]'>8</p>
+            <p className='text-[24px]'>{allCategories.length}</p>
           </div>
         </div>
         <img className='w-[320px] h-[180px]' src={logo}></img>

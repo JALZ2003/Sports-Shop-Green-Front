@@ -38,32 +38,43 @@ const Sidebar = ({ categories, filteredCategories, onCategoryChange, onPriceFilt
                 }`}
             >
                 <SearchBar action={handleSearch} />
-                <h4 className="my-4 text-white text-lg font-semibold">Categories</h4>
-                <div className="flex flex-col gap-2">
+                <h4 className="my-4 text-white lg:text-lg font-semibold">Categories</h4>
+                <div className="flex flex-col gap-1 lg:gap-2">
+
                     {categories.map(category => (
                         <div
                             key={category._id}
-                            className={`flex flex-col justify-between bg-slate-950`}
+                            className={`flex items-center bg-slate-950 p-2 lg:p-3 rounded-md cursor-pointer transition-all duration-300 hover:bg-slate-900`}
                             style={{ backgroundColor: filteredCategories[category._id] ? category.color : '' }}
+                            onClick={() => handleCheckboxChange(category._id, !filteredCategories[category._id])}
                         >
-                            <input
-                                type="checkbox"
-                                id={category._id}
-                                value={category._id}
-                                className={`appearance-none h-1 w-full bg-gray-400 transition-all duration-300`}
-                                checked={filteredCategories[category._id] || false}
-                                onChange={(e) => handleCheckboxChange(category._id, e.target.checked)}
-                            />
-                            <label
-                                htmlFor={category._id}
-                                className='p-1 flex flex-row justify-center px-2 select-none text-white'
+                            <div className="relative">
+                                <input
+                                    type="checkbox"
+                                    id={category._id}
+                                    value={category._id}
+                                    className={`appearance-none h-5 w-5 border border-gray-400 bg-gray-800 rounded-md mr-2 checked:bg-blue-500 checked:border-transparent`}
+                                    checked={filteredCategories[category._id] || false}
+                                    onChange={() => { }}
+                                />
+                                {filteredCategories[category._id] && (
+                                    <div className="absolute top-0 left-0 w-5 h-5 bg-blue-500 rounded-md flex items-center justify-center text-white" >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                                            <path fillRule="evenodd" d="M6.293 10.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                )}
+                            </div>
+                            <div
+                                className='select-none text-white cursor-pointer'
                             >
                                 {category.name}
-                            </label>
+                            </div>
                         </div>
                     ))}
                 </div>
-                <h4 className="my-4 text-white text-lg font-semibold">Price</h4>
+
+                <h4 className="my-2 lg:my-4 text-white lg:text-lg font-semibold">Price</h4>
                 <div className="flex items-center justify-between gap-4 mb-4">
                     <div className="relative">
                         <RiMoneyDollarCircleLine className="absolute left-2 top-1/2 -translate-y-1/2" />
