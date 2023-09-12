@@ -115,6 +115,8 @@ function Shop() {
                             }) && <div className="col-span-full row-span-full h-screen flex items-center justify-center"><span className="text-3xl p-6 text-orange rounded-full font-medium">Results not found!</span></div>}
                         </div>
                     </div>
+
+
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}

@@ -1,4 +1,4 @@
-import { RiShoppingCart2Line } from "react-icons/ri";
+import { RiHeartLine } from "react-icons/ri";
 import { Link as Anchor } from 'react-router-dom';
 
 const Card = ({ product }) => {
@@ -7,11 +7,16 @@ const Card = ({ product }) => {
 
     return (
         <div className={`bg-blue-200 p-1 md:p-2 lg:p-3 rounded-lg shadow-md border-l-4  border-gray-800/10`} style={{ borderColor: categoryColor }}>
-            <img
-                src={product.url_photo}
-                className="w-full h-48 md:h-56 lg:h-64 object-cover rounded-lg border border-gray-300"
-                alt={product.name}
-            />
+            <div className="relative">
+                <img
+                    src={product.url_photo}
+                    className="w-full h-48 md:h-56 lg:h-64 object-cover rounded-lg border border-gray-300"
+                    alt={product.name}
+                />
+                <button className="absolute top-2 right-2 bg-red-500/90 text-white font-bold rounded-full p-1 md:p-2 lg:p-3 hover:bg-red-600 hover:scale-110 transition-all duration-200 shadow-black shadow-md">
+                    <RiHeartLine />
+                </button>
+            </div>
             <div className="p-4 flex flex-col">
                 <h1 className="text-base md:text-lg lg:text-xl text-blue-700 font-semibold capitalize h-14" title={product.name}>{product.name}</h1>
                 <div className=" flex justify-between">

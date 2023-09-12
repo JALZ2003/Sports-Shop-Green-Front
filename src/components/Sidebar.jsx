@@ -40,7 +40,6 @@ const Sidebar = ({ categories, filteredCategories, onCategoryChange, onPriceFilt
                 <SearchBar action={handleSearch} />
                 <h4 className="my-4 text-white lg:text-lg font-semibold">Categories</h4>
                 <div className="flex flex-col gap-1 lg:gap-2">
-
                     {categories.map(category => (
                         <div
                             key={category._id}
