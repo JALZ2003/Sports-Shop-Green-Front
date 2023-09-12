@@ -77,32 +77,45 @@ function Shop() {
                     onPriceFilterApply={handlePriceFilterApply}
                     onSearch={handleSearchChange}
                 />
-                <div className="flex-1 flex flex-col justify-center items-center">
-                    {products
-                        .filter(product => {
-                            const productCategoryId = product.category_id._id;
-                            const isCategorySelected = filteredCategories[productCategoryId] || Object.values(filteredCategories).every(value => !value);
-                            const isPriceInRange = (
-                                (!priceFilter.minPrice || product.price >= priceFilter.minPrice) &&
-                                (!priceFilter.maxPrice || product.price <= priceFilter.maxPrice)
-                            );
-                            const isTextMatch = (
-                                !searchTerm ||
-                                product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                product.description.toLowerCase().includes(searchTerm.toLowerCase())
-                            );
-                            return isCategorySelected && isPriceInRange && isTextMatch;
-                        })
-                        .length > 0 ? (
+                <div className="flex-1 h-full flex flex-col justify-center">
+                    <div className="flex-1 h-full flex flex-col justify-center">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-                            {products.map(product => (
-                                <Card key={product._id} product={product} />
-                            ))}
+                            {products
+                                .filter(product => {
+                                    const productCategoryId = product.category_id._id;
+                                    const isCategorySelected = filteredCategories[productCategoryId] || Object.values(filteredCategories).every(value => !value);
+                                    const isPriceInRange = (
+                                        (!priceFilter.minPrice || product.price >= priceFilter.minPrice) &&
+                                        (!priceFilter.maxPrice || product.price <= priceFilter.maxPrice)
+                                    );
+                                    const isTextMatch = (
+                                        !searchTerm ||
+                                        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+                                    );
+                                    return isCategorySelected && isPriceInRange && isTextMatch;
+                                })
+                                .map(product => (
+                                    <Card key={product._id} product={product} />
+                                ))
+                            }
+                            {!products.some(product => {
+                                const productCategoryId = product.category_id._id;
+                                const isCategorySelected = filteredCategories[productCategoryId] || Object.values(filteredCategories).every(value => !value);
+                                const isPriceInRange = (
+                                    (!priceFilter.minPrice || product.price >= priceFilter.minPrice) &&
+                                    (!priceFilter.maxPrice || product.price <= priceFilter.maxPrice)
+                                );
+                                const isTextMatch = (
+                                    !searchTerm ||
+                                    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    product.description.toLowerCase().includes(searchTerm.toLowerCase())
+                                );
+                                return isCategorySelected && isPriceInRange && isTextMatch;
+                            }) && <div className="col-span-full text-center">Results not found!</div>}
                         </div>
-                    ) : (
-                        <div className="text-center">There are no products that match the selected filters.</div>
-                    )
-                    }
+                    </div>
+
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
@@ -113,9 +126,6 @@ function Shop() {
                         goToPage={goToPage}
                     />
                 </div>
-
-
-
             </main>
         </div>
     );
