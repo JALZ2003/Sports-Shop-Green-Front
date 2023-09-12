@@ -1,5 +1,5 @@
 import arrow from '/Images/Arrow.png'
-import { Link as Anchor } from 'react-router-dom'
+import { Link as Anchor, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../apiUrl';
 import Swal from "sweetalert2"
@@ -8,6 +8,9 @@ import { useRef } from 'react'
 import header from '../header.js'
 
 export default function BeSeller() {
+
+	const navigate = useNavigate();
+
 	const beSell = () => {
 		let data = {
 			name: name.current.value,
@@ -16,13 +19,12 @@ export default function BeSeller() {
 			country: country.current.value,
 			city: city.current.value
 		}
-		console.log(data)
 		axios.post(apiUrl + 'creators', data, header())
 			.then((res) => Swal.fire({
 				icon: 'success',
 				text: 'Seller created!'
 
-			}, setTimeout(() => navigate('/'), 2000)))
+			})).then(() => navigate("/"))
 			.catch(err => Swal.fire({
 				icon: 'error',
 				text: 'sign in please!',
