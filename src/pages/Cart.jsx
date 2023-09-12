@@ -22,6 +22,11 @@ export default function Cart() {
         setReload(!reload);
     }
 
+    const updateCart = async (id, e) => {
+        await disptach(updateProductCart({ cart_id: id, quantity: e.target.value }));
+        setReload(!reload);
+    }
+
     useEffect(() => {
         axios(`${apiUrl}carts`, headers()).then(res => {
             setCart(res.data.response.cart);
@@ -34,7 +39,6 @@ export default function Cart() {
 
     console.log(cart);
     const connected = JSON.parse(localStorage.getItem('user'));
-
     return (
         <div className="flex flex-col w-full lg:w-[70%]  mt-[148px] items-center justify-center lg:mb-[500px] xl:mb-[400px] z-10  ">
             <div className="flex flex-col justify-between ps-10 pr-10 md:p-0 w-full md:w-[80%] lg:w-[600px] xl:w-[650px] 2xl:w-[750px] lg:items-start">
@@ -60,6 +64,8 @@ export default function Cart() {
                         quantity={product?.quantity}
                         action={() => deleteProduct(product._id)}
                     />)):(<h1 className="flex items-center justify-center text-center font-bold" >{connected?.name} {connected?.lastname} Your cart is empty. If you wish to make a purchase, please browse our products in the shop. </h1>)}
+                        update={(e) => updateCart(product._id, e)}
+                    />)}
                 </div>
             </div>
         </div>
