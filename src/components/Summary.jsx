@@ -1,14 +1,16 @@
 import { Link as Anchor } from "react-router-dom"
 import arrow from "/Images/arrowSummary.png"
 
-export default function Summary({ quantityProducts, total }) {
+export default function Summary({ products, total }) {
     return (
         <div className="w-full">
             <Anchor to={"/shop"} className="bg-blue text-white flex items-center min-w-full w-full justify-between h-9 p-3 hover:scale-105">PAY YOUR ORDER! <img src={arrow} className="w-10 h-3 ms-4" alt="" /></Anchor>
             <h1 className="font-bold mt-2">ORDER SUMMARY</h1>
-            <div className="flex justify-between mt-2">
-                <p> {quantityProducts} products</p>
-                <p>$40</p>
+            <div className="flex flex-col justify-between mt-2">
+                {products.map((each, index) => <div key={index} className="flex justify-between">
+                    <p> {each.quantity} {each.product_id.name} </p>
+                    <p> ${each.quantity * each.product_id.price} </p>
+                </div>)}
             </div>
             <div className="flex justify-between mt-1">
                 <p>Shipment</p>
