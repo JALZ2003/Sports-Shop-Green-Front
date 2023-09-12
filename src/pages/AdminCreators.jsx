@@ -2,7 +2,7 @@ import axios from "axios"
 import apiUrl from "../apiUrl"
 import header from "../header"
 import { useEffect, useState } from "react"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import creatorsActions from "../store/actions/creators";
 const { destroyCreator, updateCreator } = creatorsActions
 
@@ -10,20 +10,31 @@ export default function AdminCreators() {
 
   const dispatch = useDispatch();
 
+  const creatorsStore = useSelector(store => store.creators)
+  console.log(creatorsStore)
+
   const [creators, setCreators] = useState([])
   const [reload, setReload] = useState(false)
 
-  const changeToggle = (each) => {
-    setReload(!reload)
-    dispatch(updateCreator({
-      creator_id: each._id,
-      active: !each.active,
-    }))
+  const changeToggle = async (each) => {
+    try {
+      await dispatch(updateCreator({
+        creator_id: each._id,
+        active: !each.active,
+      }))
+      setReload(!reload);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  const deleteCreator = (each) => {
-    setReload(!reload)
-    dispatch(destroyCreator({ creator_id: each._id }))
+  const deleteCreator = async (each) => {
+    try {
+      await dispatch(destroyCreator({ creator_id: each._id }));
+      setReload(!reload);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   useEffect(() => {
@@ -33,7 +44,7 @@ export default function AdminCreators() {
   return (
     <div className='flex w-full h-screen'>
       <div className='lg:w-[600px]'></div>
-      <div className='w-full flex flex-col items-center pt-[180px] lg:pt-[50px]'>
+      <div className='w-full flex flex-col items-center pt-[180px] lg:pt-[30px]'>
         <h1 className='text-[40px] font-bold pb-5'>Creators</h1>
         <table className="w-[90%] lg:w-[95%] ">
           <tbody className=" w-full rounded-lg">
@@ -41,8 +52,8 @@ export default function AdminCreators() {
               <th className="border-b-2 border-blue w-[15%] lg:w-[25%]">Name</th>
               <th className="border-b-2 border-blue w-[15%] lg:w-[25%]">Last Name</th>
               <th className="border-b-2 border-blue w-[15%] lg:w-[25%]">Company</th>
-              <th className="border-b-2 border-blue w-[15%] lg:w-[25%]">Active</th>
-              <th className="border-b-2 border-blue w-[15%] lg:w-[25%]"></th>
+              <th className="border-b-2 border-blue w-[15%] lg:w-[10%]">Active</th>
+              <th className="border-b-2 border-blue w-[15%] lg:w-[10%]"></th>
             </tr>
             {(creators.length !== 0) ? (
               creators?.map((each, index) =>
@@ -58,7 +69,7 @@ export default function AdminCreators() {
                   </th>
                   <th className="border border-slate-400 lg:w-[10%] font-normal">
 
-                    {/* <div onClick={() => changeToggle(each)} className="flex justify-center items-center">
+                    <div onClick={() => changeToggle(each)} className="flex justify-center items-center">
                       {!each.active? (
                         <label className="relative cursor-pointer h-[20px] w-[40px] rounded-full appearance-none bg-gray-400" htmlFor="toggle-switch">
                           <input defaultChecked="true" className="sr-only peer" type="checkbox" id="toglle-switch" />
@@ -70,9 +81,9 @@ export default function AdminCreators() {
                           <span className="w-2/5 h-4/5 bg-white absolute rounded-full left-0.5 top-0.5 peer-checked:left-[22px] transition-all duration-500" />
                         </label>
                       )}
-                    </div> */}
+                    </div>
 
-                    <input onChange={() => changeToggle(each)} defaultChecked={each.active} type="checkbox" />
+                    {/* <input onChange={() => changeToggle(each)} defaultChecked={each.active} type="checkbox" /> */}
 
 
                   </th>
