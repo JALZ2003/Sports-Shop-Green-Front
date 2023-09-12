@@ -122,11 +122,11 @@ export default function Navbar() {
                     </span>
                 </div >
 
-                <ul className={`transition-all ease-in duration-500 w-full pl-4 pb-2 bg-gray-200 relative ${show ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
+                <ul className={`w-full md:w-[240px] flex flex-col items-center transition-all ease-in duration-500 mt-2 bg-gray-200 relative ${show ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
                     {options?.map((each, index) =>
-                        <li className="py-2 w-full bg-gray-200" key={index}>
+                        <li className="py-2 w-full flex justify-center md:justify-start bg-gray-200" key={index}>
                             <Anchor onClick={each.onClick} key={index} to={each.to}>
-                                <div className='text-black font-poppins text-left text-[18px] font-semibold leading-6 rounded-lg cursor-pointer bg-gray-200 hover:bg-gray-300 hover:scale-110 transition p-2 w-[200px]'>
+                                <div className='text-black ms-5 font-poppins text-center md:text-left text-[18px] font-semibold leading-6 rounded-lg cursor-pointer hover:bg-gray-300 hover:scale-110 transition p-2 w-[200px]'>
                                     {each.title}
                                 </div>
                             </Anchor>
