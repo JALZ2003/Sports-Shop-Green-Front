@@ -67,7 +67,7 @@ export default function Signup() {
 							<label className='font-light text-sm text-white' htmlFor="email">Email</label>
 							<input type="text" ref={email} className='rounded-lg font-thin  text-black focus:border-black-400 active:bg-black-600  h-8' />
 						</div>
-						<label className='font-light text-[10px] m-2 flex w-3/4 mt-4 items-center justify-center' htmlFor="authorize">
+						<label className='font-light text-[15px] m-2 flex w-3/4 mt-4 items-center justify-center' htmlFor="authorize">
 							<input type="checkbox" ref={authorize} className='h-8 w-6 m-2' />
 							<p className='text-white'>I declare that I have read and authorize the use of my personal data according to Terms and Conditions of Mometum X.</p>
 						</label>
