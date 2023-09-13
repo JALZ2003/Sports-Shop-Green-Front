@@ -68,22 +68,28 @@ export default function ProductDetails({ product }) {
 		axios.post(`${apiUrl}carts`, data, header()).then(res => {
 			console.log(res);
 			Swal.fire({
+				position: 'top-end',
 				icon:'success',
-				html:'The product has been added to the cart!'
+				iconColor: '#F4A020',
+				html: 'The product has been added to the cart!',
+				width: '200px',
+				showConfirmButton: false,
+				timer: 1800,
+
 			})
 		}).catch(error => {
 			Swal.fire({
-				icon:'error',
-				html:'You are not logged in. Please log in to enjoy our products!'
+				icon: 'error',
+				html: 'You are not logged in. Please log in to enjoy our products!'
 			})
-            setTimeout(()=>navigate("/signin"),1000)
+			setTimeout(() => navigate("/signin"), 1000)
 			console.log(error)
 		})
 	};
 
 	const act = (id) => {
-        window.location.replace('/details/' + id)
-    }
+		window.location.replace('/details/' + id)
+	}
 
 	return (
 		<div className="container mx-auto my-16 p-6">

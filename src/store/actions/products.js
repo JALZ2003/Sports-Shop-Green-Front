@@ -3,9 +3,10 @@ import axios from "axios";
 import apiUrl from "../../apiUrl"
 import headers from "../../header"
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const save_name = createAction('save_name', obj => {
-    return { payload: { name: obj.name} }
+    return { payload: { name: obj.name } }
 })
 
 const save_checks = createAction('save_checks', obj => {
@@ -16,11 +17,38 @@ const destroyProduct = createAsyncThunk(
     "destroyProduct",
     async (obj) => {
         try {
-            let one = await axios.delete(apiUrl + "products/" + obj.product_id, headers())
-            return {
-                id_to_delete: one.data.response 
+            const result = await new Promise((resolve) => {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    iconColor: '#F4A020',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        );
+                        resolve(true); // Resuelve la promesa si se confirma la eliminación
+                    } else {
+                        resolve(false); // Resuelve la promesa si se cancela la eliminación
+                    }
+                });
+            });
+            if (result) {
+                const one = await axios.delete(apiUrl + "products/" + obj.product_id, headers());
+                return {
+                    id_to_delete: one.data.response
+                };
+            } else {
+                // La eliminación fue cancelada, puedes devolver algo adecuado o lanzar un error.
+                throw new Error('Eliminación cancelada');
             }
-            
         } catch (error) {
             return null
         }
@@ -32,15 +60,15 @@ const updateProduct = createAsyncThunk(
     async (obj) => {
         try {
             let one = await axios.put(apiUrl + "products/" + obj.product_id,
-             {
-                name : obj.name,
-                category_id: obj.category_id,
-                price: obj.price,
-                stock: obj.stock,
-                sex: obj.sex,
-                url_photo: obj.url_photo,
-                description: obj.description,
-            }, headers())
+                {
+                    name: obj.name,
+                    category_id: obj.category_id,
+                    price: obj.price,
+                    stock: obj.stock,
+                    sex: obj.sex,
+                    url_photo: obj.url_photo,
+                    description: obj.description,
+                }, headers())
             return one.data.response
         } catch (error) {
             return null
