@@ -19,8 +19,8 @@ const read_categories = createAsyncThunk(
     "read_categories",
     async () => {
         try {
-            let all =  await axios.get(apiUrl + "categories", header())
-            let categories = all.data
+            let all =  await axios.get(apiUrl + "categories")
+            let categories = all.data.response
             return {
                 categories
             }
