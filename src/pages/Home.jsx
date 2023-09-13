@@ -4,6 +4,7 @@ import Equipements from "/Images/Equipements.png"
 import Tennis from "/Images/Tennis.png"
 import Carrousel from "../components/Carrousel"
 import CardCategories from "../components/CardCategories"
+import { Link as to } from "react-router-dom"
 // import { useSelector, useDispatch } from "react-redux"
 // import { useState, useEffect } from "react"
 // import categories_actions from "../store/actions/categories"
@@ -16,6 +17,10 @@ export default function Home() {
     // useEffect(() =>{
     //     dispatch(read_categories())
     // }, [])
+/* 
+    useEffect(() => {
+        axios(`${apiUrl}products?page=${currentPage}`).then(res => {
+            setCategory(res.data.response)})}) */
 
     return (
         <>
@@ -25,7 +30,7 @@ export default function Home() {
                 <div className="flex justify-around py-10 px-4 md:px-2 flex-wrap gap-8 bg-gray-200 -mt-6">
 
                     <div className="flex-col w-[300px] lg:w-[22%] h-[300px] object-cover rounded-2xl overflow-hidden  shadow-lg">
-                        <div className=" flex items-end justify-center pb-10 h-full w-full bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(${SportWear})` }}>
+                        <div  to={`/products/${category_id}`}  className=" flex items-end justify-center pb-10 h-full w-full bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(${SportWear})` }}>
                             <span className=" flex justify-center  items-center w-[80%] lg:w-[80%] h-16 rounded-md  text-2xl md:text-xl  lg:text-2xl font-bold text-gray-800  bg-gray-100  bg-opacity-60 drop-shadow-2xl">SPORTWEAR</span>
                         </div>
                     </div>
