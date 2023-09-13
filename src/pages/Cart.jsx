@@ -46,7 +46,7 @@ export default function Cart() {
                     <h1 className="font-bold md:text-3xl text-xl">YOUR CART</h1>
                     <Anchor to={"/products"} className="bg-blue text-white h-9 w-[200px] flex items-center justify-center ms-3 text-center rounded-sm">CONTINUE SHOPPING</Anchor>
                 </div>
-                <p className="mt-6">The items in your cart are not reserved. Complete the checkout process now to get them.</p>
+                <p className="mt-6 text-lg">The items in your cart are not reserved. Complete the checkout process now to get them.</p>
             </div>
             <div className="border border-solid border-gray-400 mt-2 w-[90%] lg:hidden" ></div>
             <div className="lg:absolute flex items-center justify-center lg:right-[4%] xl:right-[13%] lg:top-32 lg:w-[257px] xl:w-[300px] 2xl:w-[400px] w-[80%] mt-5 mb-5">
