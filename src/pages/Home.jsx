@@ -3,7 +3,6 @@ import CardCategories from "../components/CardCategories"
 
 export default function Home() {
 
-
     return (
         <>
             <main className="flex-col justify-around mt-14 pb-10">

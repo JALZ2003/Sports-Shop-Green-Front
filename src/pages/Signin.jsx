@@ -8,6 +8,7 @@ import apiUrl from "../apiUrl.js"
 import Swal from "sweetalert2"
 
 export default function Signin() {
+  const connected = JSON.parse(localStorage.getItem('user'));
   const loginForm = async () => {
     const data = {
       email: email.current.value?.trim(),
@@ -18,7 +19,10 @@ export default function Signin() {
       localStorage.setItem('token', res.data.response.token);
       localStorage.setItem('user', JSON.stringify(res.data.response.user));
       Swal.fire({
-        icon:'success'
+        icon:'success',
+        iconColor: '#F4A020',
+        html:'Welcome to Momentum X',
+        showConfirmButton: false
       })
       setTimeout(() => window.location.replace('/'), 1000);
     }).catch((err) => {
