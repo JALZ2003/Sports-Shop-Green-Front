@@ -17,7 +17,7 @@ export default function Summary({ products, total }) {
                 <p>Free</p>
             </div>
             <div className="border border-solid border-gray-400 mt-2" ></div>
-            <div className="flex justify-between mt-2">
+            <div className="flex justify-between mt-2 bg-orange bg-opacity-40 font-extrabold ps-1 pr-1">
                 <p>Total</p>
                 <p> $ {total} </p>
             </div>

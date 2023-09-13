@@ -2,6 +2,7 @@ import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import apiUrl from "../../apiUrl"
 import headers from "../../header"
+import Swal from "sweetalert2";
 
 const save_name = createAction('save_name', obj => {
     return { payload: { name: obj.name} }
@@ -19,6 +20,7 @@ const destroyProduct = createAsyncThunk(
             return {
                 id_to_delete: one.data.response 
             }
+            
         } catch (error) {
             return null
         }
