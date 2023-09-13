@@ -17,6 +17,9 @@ export default function Signin() {
     axios.post(apiUrl + 'auth/login', data).then((res) => {
       localStorage.setItem('token', res.data.response.token);
       localStorage.setItem('user', JSON.stringify(res.data.response.user));
+      Swal.fire({
+        icon:'success'
+      })
       setTimeout(() => window.location.replace('/'), 1000);
     }).catch((err) => {
       Swal.fire({
