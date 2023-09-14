@@ -12,7 +12,11 @@ import AdminCreators from './pages/AdminCreators'
 import Cart from './pages/Cart'
 import Details from './pages/Details'
 import BeSeller from './pages/BeSeller'
+import SellerProducts from './pages/SellerProducts'
 import Orders from './pages/Orders'
+import CreatorPanel from './pages/CreatorPanel'
+import Creator from './layouts/Creator';
+import CreatorOrders from './pages/CreatorOrders'
 
 const router = createBrowserRouter([
     {
@@ -23,9 +27,10 @@ const router = createBrowserRouter([
             { path: '/products/:category_id', element: <Shop /> },
             { path: '/cart', element: <Cart /> },
             { path: '/details/:id', element: <Details />},
+            { path: '/seller-products', element: <SellerProducts />},
             { path: '/orders', element: <Orders />}
         ]
-    }, 
+    },
     { path: '/signin', element: <Signin /> },
     { path: '/signup', element: <Signup /> },
     { path: '/seller-form', element: <BeSeller /> },
@@ -37,6 +42,14 @@ const router = createBrowserRouter([
             { path: '/admincreators', element: <AdminCreators /> },
             { path: '/adminproducts/:page', element: <AdminProducts /> },
             { path: '/admincategories', element: <AdminCategories /> },
+        ]
+    },
+    {
+        path: '/',
+        element: <Creator />,
+        children: [
+            { path: '/creatorPanel', element: <CreatorPanel /> },
+            { path: '/ordersCreator', element: <CreatorOrders /> },
         ]
     }
 ])
