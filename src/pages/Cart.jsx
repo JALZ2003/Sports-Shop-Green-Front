@@ -44,7 +44,7 @@ export default function Cart() {
             <div className="flex flex-col justify-between ps-10 pr-10 md:p-0 w-full md:w-[80%] lg:w-[600px] xl:w-[650px] 2xl:w-[750px] lg:items-start">
                 <div className="flex justify-between items-center w-full ">
                     <h1 className="font-bold md:text-3xl text-xl">YOUR CART</h1>
-                    <Anchor to={"/products"} className="bg-blue text-white h-9 w-[200px] flex items-center justify-center ms-3 text-center rounded-sm">CONTINUE SHOPPING</Anchor>
+                    <Anchor to={"/products/:id"} className="bg-blue text-white h-9 w-[200px] flex items-center justify-center ms-3 text-center rounded-sm">CONTINUE SHOPPING</Anchor>
                 </div>
                 <p className="mt-6 text-lg">The items in your cart are not reserved. Complete the checkout process now to get them.</p>
             </div>

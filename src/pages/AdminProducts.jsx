@@ -26,9 +26,9 @@ export default function AdminProducts() {
 		navigate(`/adminproducts/${numberPage}`);
 	}
 
-	const deleteProduct = (each) => {
+	const deleteProduct = async (each) => {
+		await dispatch(destroyProduct({ product_id: each._id }))
 		setReload(!reload)
-		dispatch(destroyProduct({ product_id: each._id }))
 	}
 
 	const editOpen = (each) => {
@@ -85,7 +85,7 @@ export default function AdminProducts() {
 				<div className="flex flex-col justify-center items-center w-full pt-5">
 					<div className='flex justify-end items-center w-[90%] lg:w-[95%] pr-2'>
 						<h1 className='text-[20px] font-bold'>New</h1>
-						<svg onClick={() => { setShow(!show), setAdd(true) }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 ml-2 mt-1 cursor-pointer transition hover:scale-105">
+						<svg onClick={() => {setShow(!show), setAdd(true)}} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 ml-2 mt-1 cursor-pointer transition hover:scale-105">
 							<path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
 						</svg>
 					</div>
@@ -149,7 +149,6 @@ export default function AdminProducts() {
 
 						</tbody>
 					</table>
-
 				</div>
 				<div className="flex justify-center items-center pt-2 pb-5">
 					{prev &&
