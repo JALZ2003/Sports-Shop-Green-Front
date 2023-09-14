@@ -1,59 +1,63 @@
-import React from 'react';
-import {
-    HiChevronDoubleLeft,
-    HiChevronDoubleRight
-} from "react-icons/hi";
+import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi";
 
-const Pagination = ({ currentPage, totalPages, goToPage, goToPrevPage, goToNextPage }) => {
-    const generatePages = () => {
-        const pages = [];
-
-        for (let i = 1; i <= totalPages; i++) {
-            pages.push(i);
-        }
-
-        return pages;
-    };
-
-    const visiblePages = generatePages().slice(currentPage - 1, currentPage + 2);
-
+const Pagination = ({ next, prev, page, pages, action }) => {
+    console.log(next, prev, page, pages, action)
     return (
         <nav className="mt-4">
             <ul className="flex justify-center">
-                <li className="cursor-pointer">
-                    <a
-                        className={`mx-1 flex h-9 w-9 items-center justify-center rounded-full 
-            ${currentPage === 1 ? 'bg-gray-200 cursor-not-allowed' : 'border border-blue-gray-100 bg-transparent text-blue-gray-500'} 
-            p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300`}
-                        onClick={goToPrevPage}
-                        disabled={currentPage === 1}
-                    >
-                        <HiChevronDoubleLeft />
-                    </a>
-                </li>
-                {visiblePages.map((page) => (
-                    <li key={page} className="cursor-pointer">
-                        <a
-                            className={`mx-1 flex h-9 w-9 items-center justify-center rounded-full 
-                                ${currentPage === page ? 'bg-orange text-white' : 'border border-blue-gray-100 bg-transparent text-blue-gray-500'} 
-                                p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300`}
-                            onClick={() => goToPage(page)}
+                {prev &&
+                    <li className="cursor-pointer">
+                        <button
+                            className='mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-gray-200'
+                            onClick={() => action(prev)}
                         >
-                            {page}
-                        </a>
+                            <HiChevronDoubleLeft />
+                        </button>
                     </li>
-                ))}
-                <li className="cursor-pointer">
-                    <a
-                        className={`mx-1 flex h-9 w-9 items-center justify-center rounded-full 
-            ${currentPage === totalPages ? 'bg-gray-200 cursor-not-allowed' : 'border border-blue-gray-100 bg-transparent text-blue-gray-500'} 
-            p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300`}
-                        onClick={goToNextPage}
-                        disabled={currentPage === totalPages}
+                }
+
+                {(page - 1) > 0 && <li className="cursor-pointer">
+                    <button
+                        value={next}
+                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-500 justify-center rounded-full bg-white text-black p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
+                        onClick={(e) => action(e.target.value)}
                     >
-                        <HiChevronDoubleRight />
-                    </a>
+                        {page - 1}
+                    </button>
                 </li>
+                }
+
+                <li className="cursor-pointer">
+                    <button
+                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-500 justify-center rounded-full bg-orange text-white p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
+                        onClick={() => action(page)}
+                    >
+                        {page}
+                    </button>
+                </li>
+
+
+                {(page + 1) <= pages && <li className="cursor-pointer">
+                    <button
+                        value={next}
+                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-500 justify-center rounded-full bg-white text-black p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
+                        onClick={(e) => action(e.target.value)}
+                    >
+                        {page + 1}
+                    </button>
+                </li>}
+
+
+                {next &&
+                    <li className="cursor-pointer">
+                        <button
+                            className='mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-gray-200'
+                            onClick={() => action(next)}
+                        >
+                            <HiChevronDoubleRight />
+                        </button>
+                    </li>
+                }
             </ul>
         </nav>
     );
