@@ -8,7 +8,7 @@ import ModalNewCategory from '../components/ModalNewCategory';
 
 
 export default function AdminCategories() {
-	const allCategories = useSelector(store => store.categories.categories.response)
+	const allCategories = useSelector(store => store.categories.categories)
 	const dispatch = useDispatch()
 	const navigate = useNavigate();
 	const [isLoading, setIsloading] = useState(true)

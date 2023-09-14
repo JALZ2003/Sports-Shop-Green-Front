@@ -14,7 +14,6 @@ export default function AdminProducts() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const [show, setShow] = useState(false)
 	const [add, setAdd] = useState(false)
 	const [products, setProducts] = useState([]);
 	const [editP, seteditP] = useState({});
