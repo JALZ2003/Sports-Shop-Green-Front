@@ -17,6 +17,7 @@ import Orders from './pages/Orders'
 import CreatorPanel from './pages/CreatorPanel'
 import Creator from './layouts/Creator';
 import CreatorOrders from './pages/CreatorOrders'
+import PaymentForm from './pages/PaymentForm'
 
 const router = createBrowserRouter([
     {
@@ -28,12 +29,14 @@ const router = createBrowserRouter([
             { path: '/cart', element: <Cart /> },
             { path: '/details/:id', element: <Details />},
             { path: '/seller-products', element: <SellerProducts />},
-            { path: '/orders', element: <Orders />}
+            { path: '/orders', element: <Orders />},
+            
         ]
     },
     { path: '/signin', element: <Signin /> },
     { path: '/signup', element: <Signup /> },
     { path: '/seller-form', element: <BeSeller /> },
+    { path: '/payment', element: <PaymentForm />},
     {
         path: '/',
         element: <Admin />,
@@ -42,6 +45,7 @@ const router = createBrowserRouter([
             { path: '/admincreators', element: <AdminCreators /> },
             { path: '/adminproducts/:page', element: <AdminProducts /> },
             { path: '/admincategories', element: <AdminCategories /> },
+            
         ]
     },
     {
@@ -50,6 +54,7 @@ const router = createBrowserRouter([
         children: [
             { path: '/creatorPanel', element: <CreatorPanel /> },
             { path: '/ordersCreator', element: <CreatorOrders /> },
+            
         ]
     }
 ])
