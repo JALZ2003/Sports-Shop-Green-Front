@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { RiCloseLine, RiFilter3Line, RiMoneyDollarCircleLine } from "react-icons/ri";
 import SearchBar from "./SearchBar";
+import CategoryItem from "./CategoryItem";
+import { useDispatch, useSelector } from "react-redux";
+import productsActions from '../store/actions/products';
+const { save_checks } = productsActions;
 
-const Sidebar = ({ categories, onSearch }) => {
+const Sidebar = ({ categories, onSearch, refer }) => {
+    const dispatch = useDispatch();
+    const productsStore = useSelector(store => store.categories)
+    console.log(productsStore.checks)
+
+    const inputsChecked = useRef([]);
+
     const [showSidebar, setShowSidebar] = useState(false);
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
-
-    const handleCheckboxChange = (categoryId, isChecked) => {
-        onCategoryChange(categoryId, isChecked);
-    };
 
     const handleMinPriceChange = (e) => {
         setMinPrice(e.target.value);
@@ -27,6 +33,14 @@ const Sidebar = ({ categories, onSearch }) => {
         onPriceFilterApply(priceFilter);
     }
 
+
+    const actionsChecks = () => {
+        let checks = Object.values(inputsChecked.current).filter(each => each.checked).map(each => each.id);
+        dispatch(save_checks({ checks }));
+        console.log(checks)
+    }
+
+
     return (
         <>
             <div className={`w-[80%] sm:w-[40%] lg:max-w-[300px] z-20 fixed top-0  lg:static ${showSidebar ? "left-0 " : "-left-full "
@@ -36,37 +50,19 @@ const Sidebar = ({ categories, onSearch }) => {
                 <SearchBar />
                 <h4 className="my-4 text-white lg:text-lg font-semibold">Categories</h4>
                 <div className="flex flex-col gap-1 lg:gap-2">
-                    {categories.map(category => (
-                        <div
-                            key={category._id}
-                            className={`flex items-center bg-slate-950 p-2 lg:p-3 rounded-md cursor-pointer transition-all duration-300 hover:bg-slate-900`}
-                        /* style={{ backgroundColor: filteredCategories[category._id] ? category.color : '' }} */
-                        /*   onClick={() => handleCheckboxChange(category._id, !filteredCategories[category._id])} */
-                        >
-                            <div className="relative">
-                                <input
-                                    type="checkbox"
-                                    id={category._id}
-                                    value={category._id}
-                                    className={`appearance-none h-5 w-5 border border-gray-400 bg-gray-800 rounded-md mr-2 checked:bg-blue-500 checked:border-transparent`}
-                                    /*  checked={filteredCategories[category._id] || false} */
-                                    onChange={() => { }}
-                                />
-                                {/*  {filteredCategories[category._id] && ( */}
-                                <div className="absolute top-0 left-0 w-5 h-5 bg-blue-500 rounded-md flex items-center justify-center text-white" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                        <path fillRule="evenodd" d="M6.293 10.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                {/*   )} */}
-                            </div>
-                            <div
-                                className='select-none text-white cursor-pointer'
-                            >
-                                {category.name}
-                            </div>
-                        </div>
-                    ))}
+                    <form ref={inputsChecked} className="flex flex-col gap-1 lg:gap-2">
+                        {categories.map(category => (
+                            <CategoryItem
+                                key={category._id}
+                                category={category}
+                                name={category.name}
+                                color={category.color}
+                                value={category._id}
+                                action={actionsChecks}
+                                isChecked={productsStore.checks?.includes(category._id)}
+                            />
+                        ))}
+                    </form>
                 </div>
 
                 <h4 className="my-2 lg:my-4 text-white lg:text-lg font-semibold">Price</h4>

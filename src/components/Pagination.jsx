@@ -1,7 +1,6 @@
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi";
 
 const Pagination = ({ next, prev, page, pages, action }) => {
-    console.log(next, prev, page, pages, action)
     return (
         <nav className="mt-4">
             <ul className="flex justify-center">
@@ -19,7 +18,7 @@ const Pagination = ({ next, prev, page, pages, action }) => {
                 {(page - 1) > 0 && <li className="cursor-pointer">
                     <button
                         value={next}
-                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-500 justify-center rounded-full bg-white text-black p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
+                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-300 justify-center rounded-full bg-white text-black p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
                         onClick={(e) => action(e.target.value)}
                     >
                         {page - 1}
@@ -29,7 +28,7 @@ const Pagination = ({ next, prev, page, pages, action }) => {
 
                 <li className="cursor-pointer">
                     <button
-                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-500 justify-center rounded-full bg-orange text-white p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
+                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-300 justify-center rounded-full bg-orange text-white p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
                         onClick={() => action(page)}
                     >
                         {page}
@@ -40,7 +39,7 @@ const Pagination = ({ next, prev, page, pages, action }) => {
                 {(page + 1) <= pages && <li className="cursor-pointer">
                     <button
                         value={next}
-                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-500 justify-center rounded-full bg-white text-black p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
+                        className='mx-1 flex h-9 w-9 items-center border-[1px] border-gray-300 justify-center rounded-full bg-white text-black p-0 text-sm transition duration-150 ease-in-out hover:bg-light-300'
                         onClick={(e) => action(e.target.value)}
                     >
                         {page + 1}
