@@ -3,7 +3,6 @@ import NewProduct from './NewProduct'
 import EditProduct from './EditProduct'
 
 export default function ModalNewProduct({ show, setShow, setAdd, add, setReload, reload, editP, seteditP }) {
-   console.log(add)
     return (
         <>
             <div className="fixed z-40 top-0 bg-black w-full h-screen opacity-60"></div>
