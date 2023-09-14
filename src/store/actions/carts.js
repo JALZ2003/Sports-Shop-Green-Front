@@ -14,7 +14,8 @@ const destroyProductCart = createAsyncThunk("destroyProductCart", async (obj) =>
 
 const updateProductCart = createAsyncThunk("updateProductCart", async (obj) => {
     try {
-        const update = await axios.put(`${apiUrl}carts/${obj.cart_id}`, { quantity: obj.quantity }, headers());
+        let body = obj.quantity ? { quantity: obj.quantity } : { state_id: obj.state_id };
+        const update = await axios.put(`${apiUrl}carts/${obj.cart_id}`, body, headers());
         return update.data.response;
     } catch (error) {
         return null;
