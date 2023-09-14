@@ -4,7 +4,7 @@ import arrow from "/Images/arrowSummary.png"
 export default function Summary({ products, total }) {
     return (
         <div className="w-full">
-            <Anchor to={"/shop"} className="bg-blue text-white flex items-center min-w-full w-full justify-between h-9 p-3 hover:scale-105">PAY YOUR ORDER! <img src={arrow} className="w-10 h-3 ms-4" alt="" /></Anchor>
+            <Anchor to={"/orders"} className="bg-blue text-white flex items-center min-w-full w-full justify-between h-9 p-3 hover:scale-105">PAY YOUR ORDER! <img src={arrow} className="w-10 h-3 ms-4" alt="" /></Anchor>
             <h1 className="font-bold mt-2">ORDER SUMMARY</h1>
             <div className="flex flex-col justify-between mt-2">
                 {products.map((each, index) => <div key={index} className="flex justify-between">
