@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import productsActions from '../store/actions/products';
+const { save_name } = productsActions;
 
 const SearchBar = ({ action }) => {
+
+    const dispatch = useDispatch();
+    const productsStore = useSelector(store => store.products)
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleInputChange = (e) => {
@@ -17,11 +23,12 @@ const SearchBar = ({ action }) => {
                     </svg>
                 </div>
                 <input
-                    onChange={handleInputChange}
+                    onChange={(e) => dispatch(save_name({ name: e.target.value }))}
                     id="search-input"
                     type="text"
                     placeholder="Search..."
                     className="block font-poppins font-normal text-[24px] leading-[22.84px] p-[10px] text-center w-full rounded-full border-2 hover:border-primary shadow-md focus:outline-none pl-12 bg-transparent"
+                    defaultValue={productsStore.name}
                 />
             </div>
         </div>
