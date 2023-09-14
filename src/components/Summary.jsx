@@ -25,6 +25,5 @@ export default function Summary({ products, total }) {
                 Until September 30, take advantage of express delivery for $14. Receive your order the next business day. Applies to orders with confirmed payment until 11:59 pm. <br />Orders with confirmed payment on Fridays after 11:59 pm, will be prepared the following Monday for delivery in 24 hours.
                 Also, if you are a member, take advantage of free shipping until September 18 on all your purchases, log in or register to take advantage.</p>
         </div>
-
     )
 }
