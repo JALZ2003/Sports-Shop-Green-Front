@@ -1,10 +1,33 @@
-import { Link as Anchor } from "react-router-dom"
 import arrow from "/Images/arrowSummary.png"
+import axios from "axios"
+import apiUrl from "../apiUrl"
+import { useEffect, useState } from "react"
+import header from "../header";
 
 export default function Summary({ products, total }) {
+    //  const payment =  async ()=> {axios.post(apiUrl+"/payments",products).then((res)=>window.location.href = response.data.response.body_init_point)}
+    const actionsMp = () => {
+
+        const data = carts.map(each => {
+            return {               
+                    title: each.product_id.name,
+                    quantity: each.quantity,
+                    currency_id: 'COP',
+                    unit_price: each.product_id.price,           
+        }
+    })
+        axios.post(apiUrl + "payments", data).then((res) => window.location.href = res.data)
+    }
+
+    const [carts, setCarts] = useState([]);
+
+    useEffect(() => {
+        axios(apiUrl + "carts", header()).then((res) => { setCarts(res.data.response.cart); console.log(res.data.response.cart) }).catch(err => console.log(err))
+    }, [])
+
     return (
         <div className="w-full">
-            <Anchor to={"/payment"} className="bg-blue text-white flex items-center min-w-full w-full justify-between h-9 p-3 hover:scale-105">PAY YOUR ORDER! <img src={arrow} className="w-10 h-3 ms-4" alt="" /></Anchor>
+            <div onClick={() => actionsMp()} className="bg-blue text-white flex items-center min-w-full w-full justify-between h-9 p-3 hover:scale-105">PAY YOUR ORDER! <img src={arrow} className="w-10 h-3 ms-4" alt="" /></div>
             <h1 className="font-bold mt-2">ORDER SUMMARY</h1>
             <div className="flex flex-col justify-between mt-2">
                 {products.map((each, index) => <div key={index} className="flex justify-between">
