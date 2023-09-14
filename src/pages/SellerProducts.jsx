@@ -39,8 +39,9 @@ export default function SellerProducts() {
     }, [productsStore.name, reload])
 
     return (
-        <>
-        <div className="flex flex-col justify-center items-center w-full pt-5 mt-20 mb-10">
+        <div className='flex w-full h-screen'>
+        <div className='lg:w-[750px] xl:w-[650px]'></div>
+        <div className="flex flex-col justify-center items-center w-full pt-5">
             <h1 className='text-[40px] font-bold'>My Products</h1>
             <div className='z-10 flex justify-center items-center max-[400px]:w-[360px] w-[400px] lg:w-[500px] bg-white pt-10'>
                 <div className='bg-blue p-[10px] rounded-l-lg'>
@@ -121,6 +122,6 @@ export default function SellerProducts() {
             </table>
         </div>
         {show && <ModalNewProduct show={show} setShow={setShow} setAdd={setAdd} add={add} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP} />}
-        </>
+        </div>
     )
 }
