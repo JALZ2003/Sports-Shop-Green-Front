@@ -12,6 +12,7 @@ import AdminCreators from './pages/AdminCreators'
 import Cart from './pages/Cart'
 import Details from './pages/Details'
 import BeSeller from './pages/BeSeller'
+import SellerProducts from './pages/SellerProducts'
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
             { path: '/products/:category_id', element: <Shop /> },
             { path: '/cart', element: <Cart /> },
             { path: '/details/:id', element: <Details />},
+            { path: '/seller-products', element: <SellerProducts />},
 
         ]
     }, 
