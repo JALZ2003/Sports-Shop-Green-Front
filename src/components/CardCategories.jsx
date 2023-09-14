@@ -15,7 +15,7 @@ export default function CardCategories() {
     }, [])
 
     return (
-        <div className="flex justify-around py-5 px-4 md:px-2 flex-wrap gap-8 bg-gray-200 -mt-14">
+        <div className="flex justify-around py-5 px-4 md:px-2 flex-wrap gap-4 bg-gray-200 -mt-14 w-full">
             {categories.map((each) => (
                 <Anchor to={`/products/${each._id}`} key={uuidv4()} className="flex-col w-full lg:w-[18.5%] h-[100px] md:[200px] lg:[300px] object-contain rounded-2xl overflow-hidden  shadow-lg">
                     <div className=" flex items-center justify-center h-full w-full bg-cover bg-center rounded-2xl " style={{ backgroundColor: each.color }} >

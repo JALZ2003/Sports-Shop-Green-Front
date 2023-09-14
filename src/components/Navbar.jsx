@@ -225,7 +225,7 @@ export default function Navbar() {
                 </span>
             </div >
 
-            <ul className={`w-full flex flex-col items-center transition-all ease-in duration-500 mt-2 bg-gray-200 relative ${show ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
+            <ul className={`w-full flex flex-col items-center transition-all ease-in duration-500 bg-gray-200 relative ${show ? ('opacity-100 top-[0px] z-40') : ('opacity-0 top-[-500px] z-0')}`}>
                 {options?.map((each, index) =>
                     <li className="py-2 w-full flex justify-center md:justify-start bg-gray-200" key={index}>
                         <Anchor className="w-full" onClick={each.onClick} key={index} to={each.to}>
