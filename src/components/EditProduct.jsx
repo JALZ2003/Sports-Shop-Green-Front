@@ -1,16 +1,12 @@
 import { useRef, useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from "axios"
 import apiUrl from "../apiUrl.js"
-import Swal from "sweetalert2";
-import header from "../header.js"
 import productsActions from '../store/actions/products';
 const { updateProduct } = productsActions;
 
 export default function EditProduct({setReload, reload, editP, show, setShow}) {
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [categories, setCategories] = useState([]);

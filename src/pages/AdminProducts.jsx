@@ -27,9 +27,9 @@ export default function AdminProducts() {
 		navigate(`/adminproducts/${numberPage}`);
 	}
 
-	const deleteProduct = (each) => {
+	const deleteProduct = async (each) => {
+		await dispatch(destroyProduct({ product_id: each._id }))
 		setReload(!reload)
-		dispatch(destroyProduct({ product_id: each._id }))
 	}
 
 	const editOpen = (each) => {
