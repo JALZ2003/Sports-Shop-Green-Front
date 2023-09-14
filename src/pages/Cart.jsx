@@ -40,7 +40,7 @@ export default function Cart() {
     console.log(cart);
     const connected = JSON.parse(localStorage.getItem('user'));
     return (
-        <div className="flex flex-col w-full lg:w-[70%]  mt-[148px] items-center justify-center lg:mb-[500px] xl:mb-[400px] z-10  ">
+        <div className="flex flex-col w-full lg:w-[70%]  mt-[148px] items-center justify-center lg:mb-[500px] xl:mb-[270px] z-10  ">
             <div className="flex flex-col justify-between ps-10 pr-10 md:p-0 w-full md:w-[80%] lg:w-[600px] xl:w-[650px] 2xl:w-[750px] lg:items-start">
                 <div className="flex justify-between items-center w-full ">
                     <h1 className="font-bold md:text-3xl text-xl">YOUR CART</h1>
