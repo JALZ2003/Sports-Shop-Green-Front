@@ -11,12 +11,11 @@ const { save_name, save_checks } = productsActions;
 import header from "../header";
 
 function Shop() {
-    const inputsChecked = useRef();
-
     const productsStore = useSelector(store => store.products);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    console.log(productsStore)
+
+    const inputsChecked = useRef();
 
     const [products, setProducts] = useState([]);
     const [next, setNext] = useState(false);
@@ -31,19 +30,22 @@ function Shop() {
 
     useEffect(() => {
         axios.get(apiUrl + "categories")
-            .then(res => setCategories(res.data.response))
+            .then(res => {
+                setCategories(res.data.response);
+            })
             .catch(error => console.log(error));
     }, [])
 
 
     useEffect(() => {
+        console.log("Product Name:", productsStore.name);
+        console.log("Selected Categories:", productsStore);
         axios.get(apiUrl + `products?name=${productsStore.name}&page=1&category=${productsStore.checks.join(',')}`, header())
             .then(res => {
                 setPages(res.data.pages);
                 setProducts(res.data.response);
                 setNext(res.data.next);
                 setPrev(res.data.prev);
-                /* actionNextOrPrev(1); */
             }).catch(error => {
                 console.log("Error getting products:", error);
                 setProducts([])
@@ -51,6 +53,7 @@ function Shop() {
                 setPrev(null);
             });
     }, [productsStore.name, productsStore.checks]);
+
 
     useEffect(() => {
         axios.get(apiUrl + `products?title=${productsStore.text}&page=${page}&category=${productsStore.checks.join(',')}`, header())
@@ -66,16 +69,12 @@ function Shop() {
             });
     }, [page])
 
-    const actionsChecks = () => {
-        let checks = Object.values(inputsChecked.current).filter(each => each.checked).map(each => each.id);
-        dispatch(save_checks({ checks }));
-    }
-
     return (
         <div className="min-h-screen flex flex-col mt-16">
             <main className="flex gap-8 p-8 pt-0 mt-10">
                 <Sidebar
                     categories={categories}
+                    refer={inputsChecked}
                 />
                 <div className="flex-1 h-full flex flex-col justify-center">
                     <div className="flex-1 h-full flex flex-col justify-center">

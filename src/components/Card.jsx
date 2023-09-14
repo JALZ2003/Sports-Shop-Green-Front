@@ -1,5 +1,5 @@
 import { RiHeartLine } from "react-icons/ri";
-import { HiOutlinePlusCircle } from "react-icons/hi";
+import { IoIosEye } from "react-icons/io";
 import { Link as Anchor } from 'react-router-dom';
 
 const Card = ({ product }) => {
@@ -24,8 +24,8 @@ const Card = ({ product }) => {
                 </div>
                 <div className="flex items-center justify-between mt-4">
                     <h5 className="text-2xl md:text-3xl lg:text-4xl text-orange">${product.price}</h5>
-                    <Anchor to={`/details/${product._id}`} className="bg-orange text-black font-bold rounded-full p-2 md:p-3 lg:p-4 hover:bg-orange-600 hover:-translate-y-1 transition-all duration-200 shadow-black shadow-md ">
-                        <HiOutlinePlusCircle className="text-2xl text-white" />
+                    <Anchor to={`/details/${product._id}`} className="bg-orange text-black font-bold rounded-full p-1 md:p-1 lg:p-2 hover:bg-orange-600 hover:-translate-y-1 transition-all duration-200 shadow-black shadow-md ">
+                        <IoIosEye className="text-2xl text-white" />
                     </Anchor>
                 </div>
             </div>
