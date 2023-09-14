@@ -191,7 +191,7 @@ export default function Navbar() {
 
                     <div>
                         <Anchor to="/">
-                            <img className="mt-[20px] sm:ml-[63%] w-[220px] h-[60px]" src={Logo} alt='logo'></img>
+                            <img className="mt-[20px] sm:ml-[55%] w-[220px] h-[60px]" src={Logo} alt='logo'></img>
                         </Anchor>
                     </div>
                     <div className="hidden pr-4 items-center sm:flex">
