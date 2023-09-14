@@ -19,7 +19,7 @@ const read_categories = createAsyncThunk(
     "read_categories",
     async () => {
         try {
-            let all =  await axios.get(apiUrl + "categories")
+            let all = await axios.get(apiUrl + "categories")
             let categories = all.data.response
             return {
                 categories
@@ -34,11 +34,15 @@ const read_categories = createAsyncThunk(
 
 const update_category = createAsyncThunk(
     "update_category",
-    async ({obj })=> {
-        try{
-let one = await axios.put(apiUrl + "categories", + obj._id, {name:obj.name, color:obj.color}, header())
-return one.data.response
-        }catch(error){
+    async (obj) => {
+        try {
+            let one = await axios.put(apiUrl + "categories/" + obj.category_id, 
+            { 
+                name: obj.name, 
+                color: obj.color 
+            }, header())
+            return one.data.response
+        } catch (error) {
             return null
         }
     }
@@ -46,13 +50,13 @@ return one.data.response
 
 const destroy_category = createAsyncThunk(
     "destroy_category",
-    async(obj) =>{
-        try{
+    async (obj) => {
+        try {
             let one = await axios.delete(apiUrl + "categories", obj._id, header())
-            return{
-                delete:one.data.response
+            return {
+                delete: one.data.response
             }
-        }catch (error) {
+        } catch (error) {
             return null
         }
     }
