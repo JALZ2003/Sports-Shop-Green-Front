@@ -120,7 +120,7 @@ export default function ProductDetails({ product }) {
 						<button onClick={() => addCart()} className="bg-orange hover:bg-amber-600 text-white py-2 px-4 rounded-lg">
 							Add to Cart
 						</button>
-						<Anchor to={"/products"} className="bg-blue text-white  w-[200px] flex items-center justify-center py-2 px-4 rounded-lg">CONTINUE SHOPPING</Anchor>
+						<Anchor to={"/products/:id"} className="bg-blue text-white  w-[200px] flex items-center justify-center py-2 px-4 rounded-lg">CONTINUE SHOPPING</Anchor>
 					</div>
 				</div>
 			</div>
