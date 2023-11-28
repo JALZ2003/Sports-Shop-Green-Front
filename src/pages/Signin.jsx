@@ -1,6 +1,5 @@
 import Google from "../../public/Images/Google.png"
 import img from '../../public/Images/FondoM.jpeg'
-// import arrow from '/Images/Arrow.png'
 import arr from '../../public/Images/arrowSummary.png'
 import { Link as Anchor } from 'react-router-dom'
 import { useRef } from "react"
