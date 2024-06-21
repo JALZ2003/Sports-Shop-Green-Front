@@ -2,7 +2,7 @@ import React from 'react'
 import NewProduct from './NewProduct'
 import EditProduct from './EditProduct'
 
-export default function ModalNewProduct({ show, setShow, setAdd, add, setReload, reload, editP, seteditP }) {
+export default function ModalNewProduct({ show, setShow, setAdd, add, setReload, reload, editP, seteditP, panel }) {
     return (
         <>
             <div className="fixed z-40 top-0 bg-black w-full h-screen opacity-60"></div>
@@ -14,7 +14,7 @@ export default function ModalNewProduct({ show, setShow, setAdd, add, setReload,
                         </svg>
                     </div>
                     {add ? (
-                        <NewProduct setShow={setShow} show={show} reload={reload} setReload={setReload}/>
+                        <NewProduct setShow={setShow} show={show} reload={reload} setReload={setReload} panel={panel}/>
                     ):(
                         <EditProduct setShow={setShow} show={show} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP}/>
                     )}

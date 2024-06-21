@@ -5,7 +5,7 @@ import apiUrl from "../apiUrl.js"
 import Swal from "sweetalert2";
 import header from "../header.js"
 
-export default function NewProduct({ setShow, show, setReload, reload }) {
+export default function NewProduct({ setShow, show, setReload, reload, panel }) {
 
 	const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ export default function NewProduct({ setShow, show, setReload, reload }) {
 					title: "Product created",
 					confirmButtonColor: "#F97316"
 				}))
-			.then(() => { navigate("/creatorPanel"), setShow(!show) })
+			.then(() => { navigate(`/${panel}`), setShow(!show) })
 
 			.catch((error) =>
 				Swal.fire({
