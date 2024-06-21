@@ -121,7 +121,7 @@ export default function SellerProducts() {
                 </tbody>
             </table>
         </div>
-        {show && <ModalNewProduct panel={"/creatorPanel"} show={show} setShow={setShow} setAdd={setAdd} add={add} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP} />}
+        {show && <ModalNewProduct panel={"creatorPanel"} show={show} setShow={setShow} setAdd={setAdd} add={add} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP} />}
         </div>
     )
 }
