@@ -166,7 +166,7 @@ export default function AdminProducts() {
 						</button>}
 				</div>
 			</div>
-			{show && <ModalNewProduct panel={"/panel"} show={show} setShow={setShow} setAdd={setAdd} add={add} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP} />}
+			{show && <ModalNewProduct panel={"panel"} show={show} setShow={setShow} setAdd={setAdd} add={add} reload={reload} setReload={setReload} editP={editP} seteditP={seteditP} />}
 		</div>
 	)
 }
