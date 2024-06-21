@@ -36,7 +36,7 @@ export default function NewProduct({ setShow, show, setReload, reload }) {
 					title: "Product created",
 					confirmButtonColor: "#F97316"
 				}))
-			.then(() => { navigate("/adminproducts/1"), setShow(!show) })
+			.then(() => { navigate("/creatorPanel"), setShow(!show) })
 
 			.catch((error) =>
 				Swal.fire({
